@@ -39,7 +39,7 @@
             "sources" : [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz",
+                    "url": "https://download.gnome.org/sources/GConf/3.2/GConf-3.2.6.tar.xz",
                     "sha256": "1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c"
                 }
             ]
@@ -138,7 +138,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/gnome/sources/gnome-mime-data/2.18/gnome-mime-data-2.18.0.tar.bz2",
+                    "url": "https://download.gnome.org/sources/gnome-mime-data/2.18/gnome-mime-data-2.18.0.tar.bz2",
                     "sha256": "37196b5b37085bbcd45c338c36e26898fe35dd5975295f69f48028b1e8436fd7"
                 }
             ]
@@ -246,7 +246,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/gnome/sources/libart_lgpl/2.3/libart_lgpl-2.3.21.tar.bz2",
+                    "url": "https://download.gnome.org/sources/libart_lgpl/2.3/libart_lgpl-2.3.21.tar.bz2",
                     "sha256": "fdc11e74c10fc9ffe4188537e2b370c0abacca7d89021d4d303afdf7fd7476fa"
                 }
             ]
@@ -290,7 +290,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://ftp.gnome.org/pub/gnome/sources/libbonoboui/2.24/libbonoboui-2.24.5.tar.bz2",
+                    "url": "https://download.gnome.org/sources/libbonoboui/2.24/libbonoboui-2.24.5.tar.bz2",
                     "sha256": "fab5f2ac6c842d949861c07cb520afe5bee3dce55805151ce9cd01be0ec46fcd"
                 }
             ]
