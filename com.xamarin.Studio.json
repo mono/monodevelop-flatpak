@@ -120,6 +120,22 @@
             ]
         },
         {
+            "name": "referenceassemblies-pcl",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_4.6.orig.tar.xz",
+                    "sha256": "be3f565b7a4728eef2917682b15be85b60c0871a58eac6b42f52af8cbfaf9601"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/referenceassemblies-pcl/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
             "name": "gtk-sharp",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
