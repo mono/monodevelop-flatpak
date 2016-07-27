@@ -240,6 +240,18 @@
             ]
         },
         {
+            "name": "libart_lgpl",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnome.org/pub/gnome/sources/libart_lgpl/2.3/libart_lgpl-2.3.21.tar.bz2",
+                    "sha256": "fdc11e74c10fc9ffe4188537e2b370c0abacca7d89021d4d303afdf7fd7476fa"
+                }
+            ]
+        },
+        {
             "name": "libgnome",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
