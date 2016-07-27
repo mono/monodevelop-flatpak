@@ -5,6 +5,8 @@
     "sdk": "org.freedesktop.Sdk",
     "command": "monodevelop",
     "finish-args": [
+        /* access to $HOME */
+        "--filesystem=home",
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
         /* Network access */
