@@ -108,7 +108,7 @@
             "post-install": [
                 "cert-sync /etc/ssl/certs/ca-certificates.crt"
             ]
-        }
+        },
         {
             "name": "gtk-sharp",
             "config-opts": ["--disable-gtk-doc",
