@@ -1,0 +1,22 @@
+Description: Don't use srcdir in tests/Makefile.am
+ It breaks the build
+ .
+Author: YunQiang Su <wzssyqa@gmail.com>
+Bug-Debian: http://bugs.debian.org/713695
+--- libbonobo-2.32.1.orig/tests/Makefile.am
++++ libbonobo-2.32.1/tests/Makefile.am
+@@ -51,11 +51,11 @@ TESTS_ENVIRONMENT =					\
+ 	LD_LIBRARY_PATH="$(top_builddir)/bonobo/.libs:$$LD_LIBRARY_PATH"	\
+ 	PATH="$(top_builddir)/bonobo/.libs:$$PATH"	\
+ 	BONOBO_PLUGIN_PATH="$(top_builddir)/storage-modules/.libs:$$BONOBO_PLUGIN_PATH"\
+-	BONOBO_ACTIVATION_PATH="$(srcdir)$(SEARCHPATHSEP)$$BONOBO_ACTIVATION_PATH"\
+-	MODELS_DIR="$(srcdir)/models"
++	BONOBO_ACTIVATION_PATH="$(SEARCHPATHSEP)$$BONOBO_ACTIVATION_PATH"\
++	MODELS_DIR="models"
+ 
+ TESTS = test-moniker$(EXEEXT) test-event-source$(EXEEXT) test-object$(EXEEXT) \
+-	test-stream-mem$(EXEEXT) $(srcdir)/test-properties.sh test-storage-mem$(EXEEXT) \
++	test-stream-mem$(EXEEXT) test-properties.sh test-storage-mem$(EXEEXT) \
+ 	test-main-loop$(EXEEXT)
+ 
+ # TESTS += test-generic-factory.sh
