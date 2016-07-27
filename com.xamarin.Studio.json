@@ -132,6 +132,26 @@
             ]
         },
         {
+            "name": "gnome-sharp",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gnome-sharp/2.24/gnome-sharp-2.24.2.tar.bz2",
+                    "sha256": "122b1e03966d63ec3389decf5440fb94285907d1b6be48352dcf6aca292cf7b0"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/gnome-sharp/03_fix_gac_policy_filenames.dpatch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/gnome-sharp/04_initialize_dbus_glib_threading.patch"
+                }
+            ]
+        },
+        {
             "name": "monodevelop",
             "sources": [
                 {
