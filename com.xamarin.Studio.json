@@ -260,6 +260,30 @@
             ]
         },
         {
+            "name": "libgnomecanvas",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libgnomecanvas/2.30/libgnomecanvas-2.30.3.tar.bz2",
+                    "sha256": "859b78e08489fce4d5c15c676fec1cd79782f115f516e8ad8bed6abcb8dedd40"
+                }
+            ]
+        },
+        {
+            "name": "libgnomeui",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/libgnomeui/2.24/libgnomeui-2.24.5.tar.bz2",
+                    "sha256": "ae352f2495889e65524c979932c909f4629a58e64290fb0c95333373225d3c0f"
+                }
+            ]
+        },
+        {
             "name": "gnome-sharp",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
