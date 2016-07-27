@@ -152,6 +152,18 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gnome-vfs/2.24/gnome-vfs-2.24.4.tar.bz2",
                     "sha256": "62de64b5b804eb04104ff98fcd6a8b7276d510a49fbd9c0feb568f8996444faa"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/gnome-vfs/40_disable_deprecated.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/gnome-vfs/41_test_srcdir.patch"
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "autoreconf --force --install" ]
                 }
             ]
         },
