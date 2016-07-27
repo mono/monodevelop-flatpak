@@ -109,5 +109,17 @@
                 "cert-sync /etc/ssl/certs/ca-certificates.crt"
             ]
         }
+        {
+            "name": "gtk-sharp",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.26.tar.gz",
+                    "sha256": "74916af16732dd93e83c9b5c0ec0f423406289c7f6a6f1e2bb47d05c7433082a"
+                }
+            ]
+        }
     ]
 }
