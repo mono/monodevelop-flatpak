@@ -188,6 +188,18 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/ORBit2/2.14/ORBit2-2.14.19.tar.bz2",
                     "sha256": "55c900a905482992730f575f3eef34d50bda717c197c97c08fa5a6eafd857550"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/ORBit2/glib_no_deprecations.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/ORBit2/git_new_autotools_build.patch"
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "autoreconf --force --install" ]
                 }
             ]
         },
