@@ -70,6 +70,18 @@
             ]
         },
         {
+            "name": "glade",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glade/2.6/glade-2.6.8.tar.bz2",
+                    "sha256": "ef451fb508550afeab06e0fcf686d3d2988719b9e91c86e683033880a51c7b3e"
+                }
+            ]
+        },
+        {
             "name": "gtk2",
             "config-opts": ["--disable-gtk-doc",
                             "--enable-introspection=no",
