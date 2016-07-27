@@ -248,6 +248,14 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/libgnome/2.32/libgnome-2.32.1.tar.bz2",
                     "sha256": "b2c63916866485793b87398266dd7778548c1734923c272a94d84ee011b6f7a4"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libgnome/04_disable_deprecated.patch"
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "autoreconf --force --install" ]
                 }
             ]
         },

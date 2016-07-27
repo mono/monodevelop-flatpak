@@ -1,0 +1,22 @@
+From 64a0443e26a50745c8fdc02eddf60985a977275f Mon Sep 17 00:00:00 2001
+From: Colin Walters <walters@verbum.org>
+Date: Thu, 02 May 2013 21:58:00 +0000
+Subject: Don't use G_DISABLE_DEPRECATED
+
+Because really, no one cares about this code, we're not going to
+stay on the GLib treadmill.
+---
+diff --git a/libgnome/Makefile.am b/libgnome/Makefile.am
+index 9c8cd3e..aa01f6c 100644
+--- a/libgnome/Makefile.am
++++ b/libgnome/Makefile.am
+@@ -17,7 +17,6 @@ INCLUDES = \
+ 	-I$(srcdir)/..						\
+ 	$(WARN_CFLAGS)						\
+ 	$(LIBGNOME_CFLAGS)					\
+-	-DG_DISABLE_DEPRECATED					\
+ 	-DLIBGNOME_PREFIX=\""$(prefix)"\"			\
+ 	-DLIBGNOME_LIBDIR=\""$(libdir)"\"			\
+ 	-DLIBGNOME_DATADIR=\""$(datadir)"\"			\
+--
+cgit v0.9.1
