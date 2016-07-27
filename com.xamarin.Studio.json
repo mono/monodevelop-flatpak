@@ -70,18 +70,6 @@
             ]
         },
         {
-            "name": "glade",
-            "config-opts": ["--disable-gtk-doc",
-                            "--disable-man"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.gnome.org/sources/glade/2.6/glade-2.6.8.tar.bz2",
-                    "sha256": "ef451fb508550afeab06e0fcf686d3d2988719b9e91c86e683033880a51c7b3e"
-                }
-            ]
-        },
-        {
             "name": "gtk2",
             "config-opts": ["--disable-gtk-doc",
                             "--enable-introspection=no",
@@ -92,6 +80,18 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.29.tar.xz",
                     "sha256": "0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8"
+                }
+            ]
+        },
+        {
+            "name": "glade",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/glade/2.6/glade-2.6.8.tar.bz2",
+                    "sha256": "ef451fb508550afeab06e0fcf686d3d2988719b9e91c86e683033880a51c7b3e"
                 }
             ]
         },
