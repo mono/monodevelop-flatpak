@@ -1,0 +1,110 @@
+{
+    "app-id": "com.xamarin.Studio",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.4",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "monodevelop",
+    "finish-args": [
+        /* X11 + XShm access */
+        "--share=ipc", "--socket=x11",
+        /* Network access */
+        "--share=network"
+    ],
+    "build-options" : {
+        "cflags": "-O2 -g",
+        "cxxflags": "-O2 -g",
+        "env": {
+            "V": "1"
+        }
+    },
+    "cleanup": ["/include", "/share/aclocal",
+                "/man", "/share/man", "/share/gtk-doc",
+                "/share/vala",
+                "*.la", "*.a"],
+    "modules": [
+        {
+            "name": "udev",
+            "config-opts": [ "--disable-hwdb", "--disable-logging", "--disable-gudev",
+                             "--disable-introspection", "--disable-keymap", "--disable-mtd_probe"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.kernel.org/pub/linux/utils/kernel/hotplug/udev-175.tar.bz2",
+                    "sha256": "4c7937fe5a1521316ea571188745b9a00a9fdf314228cffc53a7ba9e5968b7ab"
+                }
+            ]
+        },
+        {
+            "name": "dbus-glib",
+            "config-opts": [ "--disable-static", "--disable-gtk-doc" ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://dbus.freedesktop.org/releases/dbus-glib/dbus-glib-0.106.tar.gz",
+                    "sha256": "b38952706dcf68bad9c302999ef0f420b8cf1a2428227123f0ac4764b689c046"
+                }
+            ]
+        },
+        {
+            "name": "gconf",
+            "config-opts": ["--disable-orbit"],
+            "sources" : [
+                {
+                    "type": "archive",
+                    "url": "http://ftp.gnome.org/pub/GNOME/sources/GConf/3.2/GConf-3.2.6.tar.xz",
+                    "sha256": "1912b91803ab09a5eed34d364bf09fe3a2a9c96751fde03a4e0cfa51a04d784c"
+                }
+            ]
+        },
+        {
+            "name": "atk",
+            "config-opts": ["--disable-gtk-doc",
+                            "--enable-introspection=no",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/atk/2.18/atk-2.18.0.tar.xz",
+                    "sha256": "ce6c48d77bf951083029d5a396dd552d836fff3c1715d3a7022e917e46d0c92b"
+                }
+            ]
+        },
+        {
+            "name": "pango",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/pango/1.38/pango-1.38.1.tar.xz",
+                    "sha256": "1320569f6c6d75d6b66172b2d28e59c56ee864ee9df202b76799c4506a214eb7"
+                }
+            ]
+        },
+        {
+            "name": "gtk2",
+            "config-opts": ["--disable-gtk-doc",
+                            "--enable-introspection=no",
+                            "--disable-man",
+                            "--with-xinput=xfree"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.29.tar.xz",
+                    "sha256": "0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8"
+                }
+            ]
+        },
+        {
+            "name": "mono",
+            "config-opts": ["--disable-boehm"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.mono-project.com/sources/mono/mono-4.4.2.8.tar.bz2",
+                    "sha256": "07c142bf8b97713c26b7e6ca9c53ce2cbf3b270b535e4157f9ed9104dbc891e8"
+                }
+            ]
+        },
+    ]
+}
