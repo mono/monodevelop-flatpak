@@ -84,6 +84,16 @@
             ]
         },
         {
+            "name": "rarian",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://rarian.freedesktop.org/Releases/rarian-0.8.1.tar.gz",
+                    "sha256": "b410d9581dddfabe93e29f9e235a9f9d04d33d8eb12afd0f5ad3bd238c55adef"
+                }
+            ]
+        },
+        {
             "name": "glade",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
