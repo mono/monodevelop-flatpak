@@ -130,6 +130,16 @@
                     "sha256": "74916af16732dd93e83c9b5c0ec0f423406289c7f6a6f1e2bb47d05c7433082a"
                 }
             ]
+        },
+        {
+            "name": "monodevelop",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/monodevelop.git",
+                    "branch": "monodevelop-6.0.2.70"
+                }
+            ]
         }
     ]
 }
