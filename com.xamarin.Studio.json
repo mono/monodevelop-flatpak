@@ -304,6 +304,14 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/libgnome-keyring/3.12/libgnome-keyring-3.12.0.tar.xz",
                     "sha256": "c4c178fbb05f72acc484d22ddb0568f7532c409b0a13e06513ff54b91e947783"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libgnome-keyring/use_pkgconfig_for_libgcrypt.patch"
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "autoreconf --force --install" ]
                 }
             ]
         },

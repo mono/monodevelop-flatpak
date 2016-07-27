@@ -1,0 +1,34 @@
+diff -urNad libgnome-keyring-3.12.0.orig/configure.ac libgnome-keyring-3.12.0/configure.ac
+--- libgnome-keyring-3.12.0.orig/configure.ac	2014-03-23 07:48:24.000000000 +0000
++++ libgnome-keyring-3.12.0/configure.ac	2016-07-27 19:11:42.518111713 +0100
+@@ -127,23 +127,17 @@
+ #
+ 
+ GCRYPT_VERSION=1.2.2
+-GCRYPT_LIBVER=1
+-
+-AM_PATH_LIBGCRYPT($GCRYPT_LIBVER:$GCRYPT_VERSION,,
+-	AC_MSG_ERROR([[
+-***
+-*** libgcrypt was not found. You may want to get it from
+-*** ftp://ftp.gnupg.org/gcrypt/libgcrypt/
+-***
+-]]))
+-libgcrypt=yes
+-AC_DEFINE_UNQUOTED(LIBGCRYPT_VERSION, "$GCRYPT_VERSION", [Version of GCRYPT we expect])
+ 
+-LIBRARY_CFLAGS="$LIBRARY_CFLAGS $LIBGCRYPT_CFLAGS"
+-LIBRARY_LIBS="$LIBRARY_LIBS $LIBGCRYPT_LIBS"
++PKG_CHECK_MODULES([LIBGCRYPT], libgcrypt >= $GCRYPT_VERSION)
+ 
+ AC_SUBST([LIBGCRYPT_CFLAGS])
+ AC_SUBST([LIBGCRYPT_LIBS])
++LIBGCRYPT_VERSION=`$PKG_CONFIG --modversion libgcrypt`
++
++AC_DEFINE_UNQUOTED(LIBGCRYPT_VERSION, "$LIBGCRYPT_VERSION", [Version of GCRYPT we expect])
++
++LIBRARY_CFLAGS="$LIBRARY_CFLAGS $LIBGCRYPT_CFLAGS"
++LIBRARY_LIBS="$LIBRARY_LIBS $LIBGCRYPT_LIBS"
+ 
+ # --------------------------------------------------------------------
+ # Debug mode
