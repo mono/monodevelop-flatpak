@@ -91,6 +91,20 @@
             ]
         },
         {
+            "name": "xamarin-gtk-theme",
+            "config-opts": ["--disable-gtk-doc",
+                            "--enable-introspection=no",
+                            "--disable-man",
+                            "--with-xinput=xfree"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/xamarin-gtk-theme.git",
+                    "branch": "master"
+                }
+            ]
+        },
+        {
             "name": "rarian",
             "sources": [
                 {
@@ -392,6 +406,10 @@
                     "type": "git",
                     "url": "git://github.com/mono/monodevelop.git",
                     "branch": "monodevelop-6.0.2.70"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/force-xamarin-theme.patch"
                 }
             ]
         }
