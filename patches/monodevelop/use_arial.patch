@@ -1,0 +1,35 @@
+diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.WelcomePage/Style.cs b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.WelcomePage/Style.cs
+index bf99154..6969593 100644
+--- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.WelcomePage/Style.cs
++++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.WelcomePage/Style.cs
+@@ -7,8 +7,8 @@ namespace MonoDevelop.Ide.WelcomePage
+ 	{
+ 		public static class WelcomeScreen
+ 		{
+-			public const string FontFamilyMac = "Sans";
+-			public const string FontFamilyWindows = "Sans";
++			public const string FontFamilyMac = "Arial";
++			public const string FontFamilyWindows = "Arial";
+ 			public const int VerticalPadding = 24; // TODO: VV: Seems to be unused
+ 			public const int HorizontalPadding = 50; // TODO: VV: Seems to be unused
+ 			public static string BackgroundColor { get; internal set; }
+@@ -30,8 +30,8 @@ namespace MonoDevelop.Ide.WelcomePage
+ 
+ 			public static class Pad
+ 			{
+-				public const string TitleFontFamilyMac = "Sans";
+-				public const string TitleFontFamilyWindows = "Sans";
++				public const string TitleFontFamilyMac = "Arial";
++				public const string TitleFontFamilyWindows = "Arial";
+ 				public const int Padding = 20;
+ 				public static string BackgroundColor { get; internal set; }
+ 				public static string BorderColor { get; internal set; }
+@@ -53,7 +53,7 @@ namespace MonoDevelop.Ide.WelcomePage
+ 				public static int SmallTitleFontSize = Platform.IsLinux ? 11 : 10;
+ 
+ 				public static int SummaryFontSize = Platform.IsLinux ? 12 : 11;
+-				public const string SummaryFontFamily = "Sans";
++				public const string SummaryFontFamily = "Arial";
+ 				public const int SummaryLineHeight = 19; // TODO: VV: Seems to be unused
+ 				public const int SummaryParagraphMarginTop = 8;
+ 

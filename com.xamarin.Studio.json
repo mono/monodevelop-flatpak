@@ -410,6 +410,10 @@
                 {
                     "type": "patch",
                     "path": "patches/monodevelop/force-xamarin-theme.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/use_arial.patch"
                 }
             ]
         }
