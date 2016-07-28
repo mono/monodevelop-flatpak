@@ -4,6 +4,8 @@
     "runtime-version": "1.4",
     "sdk": "org.freedesktop.Sdk",
     "command": "monodevelop",
+    "rename-desktop-file": "monodevelop.desktop",
+    "rename-icon": "monodevelop",
     "finish-args": [
         /* access to $HOME */
         "--filesystem=home",
