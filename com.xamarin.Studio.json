@@ -118,10 +118,14 @@
                     "type": "archive",
                     "url": "https://download.mono-project.com/sources/mono/mono-4.4.2.8.tar.bz2",
                     "sha256": "07c142bf8b97713c26b7e6ca9c53ce2cbf3b270b535e4157f9ed9104dbc891e8"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mono/hardcode_localstore_to_appdir.patch"
                 }
             ],
             "post-install": [
-                "cert-sync --user /etc/ssl/certs/ca-certificates.crt"
+                "cert-sync /etc/ssl/certs/ca-certificates.crt"
             ]
         },
         {
