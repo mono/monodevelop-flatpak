@@ -384,6 +384,7 @@
         },
         {
             "name": "monodevelop",
+            "no-parallel-make": true,
             "sources": [
                 {
                     "type": "git",
