@@ -132,8 +132,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/sources/mono/mono-4.4.2.8.tar.bz2",
-                    "sha256": "07c142bf8b97713c26b7e6ca9c53ce2cbf3b270b535e4157f9ed9104dbc891e8"
+                    "url": "http://download.mono-project.com/sources/mono/mono-4.6.0.150.tar.bz2",
+                    "sha256": "3bfaa9f7ba957c7d7f0cf3afc04f11a8f5e1b4c6f276188bc20e4b04be78fbb6"
                 },
                 {
                     "type": "patch",
@@ -405,7 +405,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/mono/monodevelop.git",
-                    "branch": "monodevelop-6.0.2.70"
+                    "branch": "monodevelop-6.1.0.5345"
                 },
                 {
                     "type": "patch",
