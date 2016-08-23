@@ -399,6 +399,20 @@
             ]
         },
         {
+            "name": "fsharp",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/fsharp/fsharp.git",
+                    "branch": "4.0.1.1"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-assemblysearchpath-fix.patch"
+                }
+            ]
+        },
+        {
             "name": "monodevelop",
             "no-parallel-make": true,
             "sources": [
