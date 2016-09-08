@@ -150,8 +150,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_4.6.orig.tar.xz",
-                    "sha256": "be3f565b7a4728eef2917682b15be85b60c0871a58eac6b42f52af8cbfaf9601"
+                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_2014.04.14.orig.tar.bz2",
+                    "sha256": "f88305669a05657dbce32d5011d6d6d8d24f0dae925e6dac04905fecd6de0530"
                 },
                 {
                     "type": "file",
