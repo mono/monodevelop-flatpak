@@ -106,6 +106,7 @@
         },
         {
             "name": "rarian",
+            "cleanup": [ "*" ],
             "sources": [
                 {
                     "type": "archive",
@@ -123,52 +124,6 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/libglade/2.6/libglade-2.6.4.tar.gz",
                     "sha256": "c41d189b68457976069073e48d6c14c183075d8b1d8077cb6dfb8b7c5097add3"
-                }
-            ]
-        },
-        {
-            "name": "mono",
-            "config-opts": ["--disable-boehm"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://download.mono-project.com/sources/mono/mono-4.6.0.243.tar.bz2",
-                    "sha256": "6f6bfe6ba803adf32e5749fc0ff39283571348d763b1ef7bf117864db22d4fa2"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/mono/hardcode_localstore_to_appdir.patch"
-                }
-            ],
-            "post-install": [
-                "cert-sync /etc/ssl/certs/ca-certificates.crt"
-            ]
-        },
-        {
-            "name": "referenceassemblies-pcl",
-            "no-autogen": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_2014.04.14.orig.tar.bz2",
-                    "sha256": "f88305669a05657dbce32d5011d6d6d8d24f0dae925e6dac04905fecd6de0530"
-                },
-                {
-                    "type": "file",
-                    "path": "patches/referenceassemblies-pcl/Makefile",
-                    "dest-filename": "Makefile"
-                }
-            ]
-        },
-        {
-            "name": "gtk-sharp",
-            "config-opts": ["--disable-gtk-doc",
-                            "--disable-man"],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.26.tar.gz",
-                    "sha256": "74916af16732dd93e83c9b5c0ec0f423406289c7f6a6f1e2bb47d05c7433082a"
                 }
             ]
         },
@@ -369,6 +324,62 @@
             ]
         },
         {
+            "name": "libssh2",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.libssh2.org/download/libssh2-1.7.0.tar.gz",
+                    "sha256": "e4561fd43a50539a8c2ceb37841691baf03ecb7daf043766da1b112e4280d584"
+                }
+            ]
+        },
+        {
+            "name": "mono",
+            "config-opts": ["--disable-boehm"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.mono-project.com/sources/mono/mono-4.6.0.245.tar.bz2",
+                    "sha256": "2981f518cace63bfe10953fecd57c7fef040077a1ac617967dde5466062c1327"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mono/hardcode_localstore_to_appdir.patch"
+                }
+            ],
+            "post-install": [
+                "cert-sync /etc/ssl/certs/ca-certificates.crt"
+            ]
+        },
+        {
+            "name": "referenceassemblies-pcl",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_2014.04.14.orig.tar.bz2",
+                    "sha256": "f88305669a05657dbce32d5011d6d6d8d24f0dae925e6dac04905fecd6de0530"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/referenceassemblies-pcl/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
+            "name": "gtk-sharp",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.26.tar.gz",
+                    "sha256": "74916af16732dd93e83c9b5c0ec0f423406289c7f6a6f1e2bb47d05c7433082a"
+                }
+            ]
+        },
+        {
             "name": "gnome-sharp",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
@@ -385,16 +396,6 @@
                 {
                     "type": "patch",
                     "path": "patches/gnome-sharp/04_initialize_dbus_glib_threading.patch"
-                }
-            ]
-        },
-        {
-            "name": "libssh2",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://www.libssh2.org/download/libssh2-1.7.0.tar.gz",
-                    "sha256": "e4561fd43a50539a8c2ceb37841691baf03ecb7daf043766da1b112e4280d584"
                 }
             ]
         },
@@ -419,7 +420,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/mono/monodevelop.git",
-                    "branch": "monodevelop-6.1.0.5436"
+                    "branch": "monodevelop-6.1.0.5441"
                 },
                 {
                     "type": "patch",
