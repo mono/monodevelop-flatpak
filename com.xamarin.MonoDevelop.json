@@ -1,5 +1,5 @@
 {
-    "app-id": "com.xamarin.Studio",
+    "app-id": "com.xamarin.MonoDevelop",
     "runtime": "org.freedesktop.Platform",
     "runtime-version": "1.4",
     "sdk": "org.freedesktop.Sdk",
