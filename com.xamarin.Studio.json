@@ -6,6 +6,7 @@
     "command": "monodevelop",
     "rename-desktop-file": "monodevelop.desktop",
     "rename-icon": "monodevelop",
+    "copy-icon": true,
     "finish-args": [
         /* access to $HOME */
         "--filesystem=home",
