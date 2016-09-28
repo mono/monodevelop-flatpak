@@ -415,6 +415,16 @@
             ]
         },
         {
+            "name": "xsp",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/xsp.git",
+                    "branch": "4.4"
+                }
+            ]
+        },
+        {
             "name": "monodevelop",
             "no-parallel-make": true,
             "sources": [
