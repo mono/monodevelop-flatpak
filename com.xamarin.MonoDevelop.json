@@ -351,6 +351,16 @@
             ]
         },
         {
+            "name": "libgdiplus",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/libgdiplus.git",
+                    "branch": "4.2"
+                }
+            ]
+        },
+        {
             "name": "mono",
             "config-opts": ["--disable-boehm"],
             "sources": [
