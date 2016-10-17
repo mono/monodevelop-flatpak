@@ -106,6 +106,22 @@
             ]
         },
         {
+            "name": "xamtheme-dark",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "patches/xamtheme-dark/gtkrc",
+                    "dest-filename": "gtkrc"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/xamtheme-dark/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
             "name": "rarian",
             "cleanup": [ "*" ],
             "sources": [
