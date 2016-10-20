@@ -367,7 +367,6 @@
                 {
                     "type": "archive",
                     "url": "http://download.mono-project.com/sources/mono/mono-4.6.1.5.tar.bz2",
-                    "sha256": "3871ee72bdfc2ea5d636ffff22cf49ae6bac7c4a4f3d687214dd8ac236bbf7c3"
                 },
                 {
                     "type": "patch",
