@@ -366,7 +366,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://download.mono-project.com/sources/mono/mono-4.6.1.5.tar.bz2",
+                    "url": "https://download.mono-project.com/sources/mono/mono-4.6.1.5.tar.bz2",
                 },
                 {
                     "type": "patch",
