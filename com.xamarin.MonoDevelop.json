@@ -363,14 +363,22 @@
         {
             "name": "mono",
             "config-opts": ["--disable-boehm"],
+            "no-parallel-make": true,
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "https://download.mono-project.com/sources/mono/mono-4.6.1.5.tar.bz2",
+                    "type": "git",
+                    "url": "git://github.com/mono/mono.git",
+                    "branch": "mono-4.6.0.245"
                 },
                 {
                     "type": "patch",
                     "path": "patches/mono/hardcode_localstore_to_appdir.patch"
+                },
+                {
+                    "type": "shell",
+                    "commands": [ "./autogen.sh",
+                                  "make get-monolite-latest"
+                    ]
                 }
             ],
             "post-install": [
