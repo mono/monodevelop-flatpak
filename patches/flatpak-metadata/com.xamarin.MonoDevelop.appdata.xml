@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.xamarin.MonoDevelop.desktop</id>
+  <name>MonoDevelop</name>
+  <summary>Integrated Development Environment</summary>
+  <description><p>A modern, sophisticated IDE with many features for building .NET applications using C# and F#, including graphic applications with Gtk# and Android applications with Xamarin.Android. It includes a rich editor, debugging, native platform integration with Linux and Android, and integrated source control to name just of few of its many features.</p></description>
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
+  <url type="homepage">http://www.monodevelop.com</url>
+  <url type="bugtracker">https://bugzilla.xamarin.com/describecomponents.cgi?product=Xamarin%20Studio</url>
+  <screenshots>
+    <screenshot type="default">
+      <image type="source">https://download.mono-project.com/monodevelop/mdlin2.png</image>
+    </screenshot>
+    <screenshot>
+      <image type="source">https://download.mono-project.com/monodevelop/mdlin1.png</image>
+    </screenshot>
+  </screenshots>
+  <releases>
+    <release version="6.1.1.5" date="2016-09-22" />
+  </releases>
+</component>

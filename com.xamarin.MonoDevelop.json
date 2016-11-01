@@ -475,6 +475,22 @@
                     "path": "patches/monodevelop/use_arial.patch"
                 }
             ]
+        },
+        {
+            "name": "flatpak-metadata",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "patches/flatpak-metadata/com.xamarin.MonoDevelop.appdata.xml",
+                    "dest-filename": "com.xamarin.MonoDevelop.appdata.xml"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/flatpak-metadata/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
         }
     ]
 }
