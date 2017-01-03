@@ -266,6 +266,20 @@
             ]
         },
         {
+            "name": "dbus-sharp",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/dbus-sharp.git",
+                    "branch": "master"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/dbus-sharp/dfd3620776f2d0589ea4c8384dfe56be53be7553.diff"
+                }
+            ]
+        },
+        {
             "name": "monodevelop",
             "no-parallel-make": true,
             "sources": [
