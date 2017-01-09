@@ -198,7 +198,8 @@
                 }
             ],
             "post-install": [
-                "cert-sync /etc/ssl/certs/ca-certificates.crt"
+                "cert-sync /etc/ssl/certs/ca-certificates.crt",
+                "cert-sync --btls /etc/ssl/certs/ca-certificates.crt"
             ]
         },
         {
