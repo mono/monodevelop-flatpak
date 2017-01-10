@@ -13,7 +13,11 @@
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
         /* Network access */
-        "--share=network"
+        "--share=network",
+        /* dbus# bug, system bus access needed for session bus to load */
+        "--system-talk-name=org.freedesktop.PolicyKit1",
+        /* Break out of sandbox */
+        "--talk-name=org.freedesktop.Flatpak"
     ],
     "build-options" : {
         "cflags": "-O2 -g",
