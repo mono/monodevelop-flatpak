@@ -229,8 +229,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.26.tar.gz",
-                    "sha256": "74916af16732dd93e83c9b5c0ec0f423406289c7f6a6f1e2bb47d05c7433082a"
+                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.42.tar.gz",
+                    "sha256": "f3b009bb73e3251378063b6f09786609cd4c061f3f8bf552f0ea663245c045c9"
                 }
             ]
         },
