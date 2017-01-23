@@ -1,0 +1,13 @@
+diff --git a/main/monodevelop.in b/main/monodevelop.in
+index bd56ab8..adb7172 100755
+--- a/main/monodevelop.in
++++ b/main/monodevelop.in
+@@ -15,6 +15,8 @@ EXE_PATH="${0%%/bin/monodevelop}/lib/monodevelop/bin/MonoDevelop.exe"
+ 
+ _MD_REDIRECT_LOG="${MD_REDIRECT_LOG:-${XDG_CONFIG_HOME:-$HOME/.config}/MonoDevelop/log}"
+ 
++mdtool setup reg-build
++
+ if [ -n "$_MD_REDIRECT_LOG" ]; then
+ 	mkdir -p `dirname "$_MD_REDIRECT_LOG"`
+ 	$MONO_EXEC $MONO_OPTIONS "$EXE_PATH" $* 2>&1 | tee "$_MD_REDIRECT_LOG"
