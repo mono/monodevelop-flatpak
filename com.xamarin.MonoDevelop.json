@@ -249,6 +249,16 @@
             ]
         },
         {
+            "name": "mono-basic",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/mono-basic.git",
+                    "branch": "4.6"
+                }
+            ]
+        },
+        {
             "name": "xsp",
             "sources": [
                 {
