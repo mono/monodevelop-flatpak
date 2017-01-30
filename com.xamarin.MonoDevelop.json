@@ -33,7 +33,7 @@
                 "/man", "/share/man", "/share/gtk-doc",
                 "/share/vala",
                 "*.la", "*.a",
-                "*unwind*"],
+                "*unwind*", "libicu*"],
     "modules": [
         {
             "name": "dbus-glib",
@@ -324,6 +324,22 @@
                     "type": "archive",
                     "url": "http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz",
                     "sha256": "1de38ffbdc88bd694d10081865871cd2bfbb02ad8ef9e1606aee18d65532b992"
+                }
+            ]
+        },
+        {
+            "name": "libicu",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-RHEL6-x64.tgz",
+                    "sha256": "2a73302fa3556a113cd5e3de9c14cf6fc39e308fbe6970af6d84d723bf2c66a3"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/libicu/Makefile",
+                    "dest-filename": "Makefile"
                 }
             ]
         },
