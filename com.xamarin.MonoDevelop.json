@@ -32,7 +32,8 @@
     "cleanup": ["/include", "/share/aclocal",
                 "/man", "/share/man", "/share/gtk-doc",
                 "/share/vala",
-                "*.la", "*.a"],
+                "*.la", "*.a",
+                "*unwind*"],
     "modules": [
         {
             "name": "dbus-glib",
@@ -313,6 +314,16 @@
                 {
                     "type": "patch",
                     "path": "patches/dbus-sharp/dfd3620776f2d0589ea4c8384dfe56be53be7553.diff"
+                }
+            ]
+        },
+        {
+            "name": "libunwind",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz",
+                    "sha256": "1de38ffbdc88bd694d10081865871cd2bfbb02ad8ef9e1606aee18d65532b992"
                 }
             ]
         },
