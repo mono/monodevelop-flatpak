@@ -1,20 +1,27 @@
-diff --git a/targets/runtimeDependencies/project.json b/targets/runtimeDependencies/project.json
-index f8be970..74d415b 100644
---- a/targets/runtimeDependencies/project.json
-+++ b/targets/runtimeDependencies/project.json
-@@ -1,5 +1,6 @@
- ﻿{
-   "runtimes": {
-+    "ubuntu-x64": {},
-     "win7-x86": {},
-     "win7-x64": {},
-     "osx.10.10-x64": {},
-@@ -26,7 +27,6 @@
-         "System.Security.Cryptography.X509Certificates": "4.1.0",
-         "System.Net.NetworkInformation": "4.1.0",
-         "Microsoft.NETCore": "5.0.1",
--        "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-         "Microsoft.NETCore.Platforms": "1.0.1",
-         "System.Collections.NonGeneric": "4.0.1",
-         "System.Console": "4.0.0",
+diff --git a/cibuild.sh b/cibuild.sh
+index 8e7a27e..2bfdba7 100755
+--- a/cibuild.sh
++++ b/cibuild.sh
+@@ -121,7 +121,7 @@ get_current_linux_name() {
+     fi
+ 
+     # Cannot determine Linux distribution, assuming Ubuntu 14.04.
+-    echo "ubuntu"
++    echo "ubuntu.14.04"
+     return 0
+ }
+ 
+diff --git a/init-tools.sh b/init-tools.sh
+index 3dea1da..90fe36d 100755
+--- a/init-tools.sh
++++ b/init-tools.sh
+@@ -61,7 +61,7 @@ get_current_linux_name() {
+     fi
+ 
+     # Cannot determine Linux distribution, assuming Ubuntu 14.04.
+-    echo "ubuntu"
++    echo "ubuntu.14.04"
+     return 0
+ }
+ 
 
