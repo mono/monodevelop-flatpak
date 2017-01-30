@@ -1,0 +1,3 @@
+#!/bin/sh
+exec /app/bin/mono-sgen /app/lib/nuget/NuGet.exe "$@"
+

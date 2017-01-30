@@ -259,6 +259,28 @@
             ]
         },
         {
+            "name": "nuget",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/NuGet/NuGet2",
+                    "branch": "2.12"
+                },
+                {
+                    "type": "file",
+                    "dest-filename": "Makefile",
+                    "path": "patches/nuget/Makefile"
+                },
+                {
+                    "type": "file",
+                    "dest-filename": "nuget",
+                    "dest": "launcher",
+                    "path": "patches/nuget/launcher"
+                }
+            ]
+        },
+        {
             "name": "xsp",
             "sources": [
                 {
