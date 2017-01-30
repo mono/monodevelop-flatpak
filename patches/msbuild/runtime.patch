@@ -9,4 +9,12 @@ index f8be970..74d415b 100644
      "win7-x86": {},
      "win7-x64": {},
      "osx.10.10-x64": {},
+@@ -26,7 +27,6 @@
+         "System.Security.Cryptography.X509Certificates": "4.1.0",
+         "System.Net.NetworkInformation": "4.1.0",
+         "Microsoft.NETCore": "5.0.1",
+-        "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
+         "Microsoft.NETCore.Platforms": "1.0.1",
+         "System.Collections.NonGeneric": "4.0.1",
+         "System.Console": "4.0.0",
 
