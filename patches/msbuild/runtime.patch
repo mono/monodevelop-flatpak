@@ -11,17 +11,3 @@ index 8e7a27e..2bfdba7 100755
      return 0
  }
  
-diff --git a/init-tools.sh b/init-tools.sh
-index 3dea1da..90fe36d 100755
---- a/init-tools.sh
-+++ b/init-tools.sh
-@@ -61,7 +61,7 @@ get_current_linux_name() {
-     fi
- 
-     # Cannot determine Linux distribution, assuming Ubuntu 14.04.
--    echo "ubuntu"
-+    echo "ubuntu.14.04"
-     return 0
- }
- 
-
