@@ -346,6 +346,18 @@
         {
             "name": "msbuild",
             "no-autogen": true,
+            "build-options": {
+                "build-args": [
+                    "--filesystem=%WORKSPACE%@tmp"
+                ],
+                "env": {
+                    "TMPDIR": "%WORKSPACE%@tmp",
+                    "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
+                    "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
+                    "HOME": "%WORKSPACE%@tmp",
+                    "XDG_DATA_HOME": "%WORKSPACE%@tmp"
+                }
+            },
             "sources": [
                 {
                     "type": "git",
