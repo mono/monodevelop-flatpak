@@ -1,0 +1,13 @@
+diff --git a/main/Main.sln b/main/Main.sln
+index 0351275..88f5736 100644
+--- a/main/Main.sln
++++ b/main/Main.sln
+@@ -2154,6 +2154,8 @@ Global
+ 		{7F5B649A-3572-4713-83FD-C28A6AA70445}.Debug|x86.Build.0 = Debug|x86
+ 		{7F5B649A-3572-4713-83FD-C28A6AA70445}.Release|x86.ActiveCfg = Release|x86
+ 		{7F5B649A-3572-4713-83FD-C28A6AA70445}.Release|x86.Build.0 = Release|x86
++		{7F5B649A-3572-4713-83FD-C28A6AA70445}.ReleaseGnome|Any CPU.Build.0 = Debug|x86
++		{7F5B649A-3572-4713-83FD-C28A6AA70445}.DebugGnome|Any CPU.Build.0 = Debug|x86
+ 		{DD14AD77-6FBB-4F0D-8083-CEC28A9D0BBD}.DebugMac|Any CPU.ActiveCfg = Debug|Any CPU
+ 		{DD14AD77-6FBB-4F0D-8083-CEC28A9D0BBD}.DebugMac|Any CPU.Build.0 = Debug|Any CPU
+ 		{DD14AD77-6FBB-4F0D-8083-CEC28A9D0BBD}.ReleaseMac|Any CPU.ActiveCfg = Release|Any CPU
