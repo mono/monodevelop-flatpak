@@ -213,7 +213,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_2014.04.14.orig.tar.bz2",
+                    "url": "https://download.mono-project.com/repo/debian/pool/main/r/referenceassemblies-pcl/referenceassemblies-pcl_2014.04.14.orig.tar.bz2",
                     "sha256": "f88305669a05657dbce32d5011d6d6d8d24f0dae925e6dac04905fecd6de0530"
                 },
                 {
@@ -230,7 +230,7 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "http://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.42.tar.gz",
+                    "url": "https://download.mono-project.com/sources/gtk-sharp212/gtk-sharp-2.12.42.tar.gz",
                     "sha256": "f3b009bb73e3251378063b6f09786609cd4c061f3f8bf552f0ea663245c045c9"
                 }
             ]
