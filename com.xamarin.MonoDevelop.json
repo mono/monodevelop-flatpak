@@ -405,6 +405,10 @@
                     "type": "patch",
                     "use-git": true,
                     "path": "patches/monodevelop/force-msbuild-backend-on-linux.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/buildinfo.patch"
                 }
             ]
         },
