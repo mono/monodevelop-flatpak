@@ -395,10 +395,6 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/monodevelop/59747172b7f883960bb62df0da25292dbf9e44a9.diff"
-                },
-                {
-                    "type": "patch",
                     "path": "patches/monodevelop/9b673202536788b2a2b98e4882e1a30d196bc897.diff"
                 },
                 {
