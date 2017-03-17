@@ -351,7 +351,7 @@
                     "--filesystem=%WORKSPACE%@tmp"
                 ],
                 "env": {
-                    "__PUBLISH_RID": "ubuntu.14.04",
+                    "__PUBLISH_RID": "ubuntu.14.04-x64",
                     "TMPDIR": "%WORKSPACE%@tmp",
                     "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
                     "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
