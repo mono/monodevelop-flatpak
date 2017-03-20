@@ -17,6 +17,6 @@
     </screenshot>
   </screenshots>
   <releases>
-    <release version="%MONODEVELOPVERSION%" date="%RELEASEDATE%" />
+    <release version="%MONODEVELOPVERSION%" timestamp="%RELEASEDATE%" />
   </releases>
 </component>
