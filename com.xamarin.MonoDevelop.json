@@ -102,8 +102,8 @@
         },
         {
             "name": "gvfs",
-            "config-opts": ["--disable-gtk-doc",
-                            "--disable-man"],
+            "config-opts": ["--disable-hal", "--disable-gdu","--disable-gcr","--disable-obexftp",
+                            "--disable-avahi","--disable-documentation","--disable-admin"],
             "sources": [
                 {
                     "type": "archive",
