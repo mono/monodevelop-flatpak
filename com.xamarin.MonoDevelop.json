@@ -19,7 +19,9 @@
         /* dbus# bug, system bus access needed for session bus to load */
         "--system-talk-name=org.freedesktop.PolicyKit1",
         /* Break out of sandbox */
-        "--talk-name=org.freedesktop.Flatpak"
+        "--talk-name=org.freedesktop.Flatpak",
+        /* gvfs */
+        "--talk-name=org.gtk.vfs","--talk-name=org.gtk.vfs.*"
     ],
     "build-options" : {
         "cflags": "-O2 -g",
@@ -95,6 +97,18 @@
                     "type": "archive",
                     "url": "https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.29.tar.xz",
                     "sha256": "0741c59600d3d810a223866453dc2bbb18ce4723828681ba24aa6519c37631b8"
+                }
+            ]
+        },
+        {
+            "name": "gvfs",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/gvfs/1.32/gvfs-1.32.0.tar.xz",
+                    "sha256": "60acc16af9564ec00017b9196549839052e3f67b5c8f39dce319af0bb3439004"
                 }
             ]
         },
