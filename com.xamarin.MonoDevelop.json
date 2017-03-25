@@ -107,8 +107,8 @@
             "sources": [
                 {
                     "type": "archive",
-                    "url": "https://download.gnome.org/sources/gvfs/1.32/gvfs-1.32.0.tar.xz",
-                    "sha256": "60acc16af9564ec00017b9196549839052e3f67b5c8f39dce319af0bb3439004"
+                    "url": "https://download.gnome.org/sources/gvfs/1.28/gvfs-1.28.3.tar.xz",
+                    "sha256": "458c4cb68570f6ef4a9e152995c62d0057c3e0a07ed64d84c7200cdd22f0bd17"
                 }
             ]
         },
