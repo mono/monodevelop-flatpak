@@ -18,5 +18,6 @@
   </screenshots>
   <releases>
     <release version="%MONODEVELOPVERSION%" timestamp="%RELEASEDATE%" />
+    <release version="6.2.0.1829" timestamp="1490485694" />
   </releases>
 </component>
