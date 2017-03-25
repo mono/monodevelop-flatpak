@@ -10,6 +10,8 @@
     "finish-args": [
         /* access to $HOME */
         "--filesystem=home",
+        /* access to other stuff, due to lots of usabilitybugs filed */
+        "--filesystem=/media", "--filesystem=/mnt", "--filesystem=/tmp",
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
         /* Network access */
