@@ -8,6 +8,9 @@
     "rename-icon": "monodevelop",
     "copy-icon": true,
     "finish-args": [
+        /* require FlatPak 0.8.0 to simplify documentation around modern syntax */
+        /* require FlatPak 0.8.3 for OpenGL on non-Mesa */
+        "--require-version=0.8.3",
         /* access to $HOME */
         "--filesystem=home",
         /* access to other stuff, due to lots of usabilitybugs filed */
