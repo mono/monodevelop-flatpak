@@ -260,11 +260,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
-                    "branch": "4.0.1.1"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fsharp/fsharp-assemblysearchpath-fix.patch"
+                    "branch": "4.1.6"
                 }
             ]
         },
