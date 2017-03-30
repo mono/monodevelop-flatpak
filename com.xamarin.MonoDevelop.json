@@ -407,10 +407,6 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/monodevelop/9b673202536788b2a2b98e4882e1a30d196bc897.diff"
-                },
-                {
-                    "type": "patch",
                     "path": "patches/monodevelop/regenerate-mdaddins-at-startup.patch"
                 },
                 {
