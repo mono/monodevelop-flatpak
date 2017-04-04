@@ -18,6 +18,7 @@
   </screenshots>
   <releases>
     <release version="%MONODEVELOPVERSION%" timestamp="%RELEASEDATE%" />
+    <release version="6.3.0.863" timestamp="1491314471" />
     <release version="6.3.0.858" timestamp="1490886184" />
     <release version="6.2.0.1829" timestamp="1490485694" />
   </releases>
