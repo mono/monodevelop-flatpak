@@ -3,7 +3,7 @@
   <id>com.xamarin.MonoDevelop.desktop</id>
   <name>MonoDevelop</name>
   <summary>Integrated Development Environment</summary>
-  <description><p>A modern, sophisticated IDE with many features for building .NET applications using C# and F#, including graphic applications with Gtk# and Android applications with Xamarin.Android. It includes a rich editor, debugging, native platform integration with Linux and Android, and integrated source control to name just of few of its many features.</p></description>
+  <description><p>A modern, sophisticated IDE with many features for building .NET applications using C# and F#, including graphic applications with Gtk#. It includes a rich editor, debugging, native platform integration with Linux, and integrated source control to name just of few of its many features.</p></description>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <url type="homepage">http://www.monodevelop.com</url>
