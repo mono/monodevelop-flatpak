@@ -386,6 +386,10 @@
                     "branch": "xplat-2017-02"
                 },
                 {
+                    "type": "patch",
+                    "path": "patches/msbuild/runtime.patch"
+                },
+                {
                     "type": "file",
                     "path": "patches/msbuild/Makefile",
                     "dest-filename": "Makefile"
