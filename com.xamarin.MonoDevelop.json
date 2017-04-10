@@ -383,7 +383,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/mono/msbuild.git",
-                    "branch": "xplat-c9"
+                    "branch": "xplat-2017-02"
                 },
                 {
                     "type": "file",
