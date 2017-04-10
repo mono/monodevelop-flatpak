@@ -330,6 +330,10 @@
                 {
                     "type": "patch",
                     "path": "patches/dbus-sharp/dfd3620776f2d0589ea4c8384dfe56be53be7553.diff"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/dbus-sharp/dbus-sharp-roslyn-compatibility.patch"
                 }
             ]
         },
