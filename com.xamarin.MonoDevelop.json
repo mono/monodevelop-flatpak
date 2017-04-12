@@ -420,6 +420,14 @@
                 },
                 {
                     "type": "patch",
+                    "path": "patches/monodevelop/c333bd439b7205cc63019e59c8383d2bd04a1159.diff"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/e67a3c79338c19bec0fe8ff65e2381d4db78d733.diff"
+                },
+                {
+                    "type": "patch",
                     "path": "patches/monodevelop/buildinfo.patch"
                 }
             ]
