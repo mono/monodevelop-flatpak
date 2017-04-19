@@ -1,7 +1,7 @@
 {
     "app-id": "com.xamarin.MonoDevelop",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "1.4",
+    "runtime-version": "1.6",
     "sdk": "org.freedesktop.Sdk",
     "command": "monodevelop",
     "rename-desktop-file": "monodevelop.desktop",
