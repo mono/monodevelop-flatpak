@@ -385,6 +385,10 @@
                     "branch": "xplat-2017-02"
                 },
                 {
+                    "type": "patch",
+                    "path": "patches/msbuild/msbuild-assembly-loader.patch"
+                },
+                {
                     "type": "file",
                     "path": "patches/msbuild/Makefile",
                     "dest-filename": "Makefile"

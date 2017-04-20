@@ -1,0 +1,13 @@
+diff --git a/src/Shared/AssemblyNameExtension.cs b/src/Shared/AssemblyNameExtension.cs
+index 529335c8..4e8c6574 100644
+--- a/src/Shared/AssemblyNameExtension.cs
++++ b/src/Shared/AssemblyNameExtension.cs
+@@ -130,7 +130,7 @@ namespace Microsoft.Build.Shared
+         internal static AssemblyNameExtension GetAssemblyNameEx(string path)
+         {
+             AssemblyName assemblyName = null;
+-#if FEATURE_ASSEMBLY_LOADFROM
++#if FEATURE_ASSEMBLY_LOADFROM || !MONO
+             try
+             {
+                 assemblyName = AssemblyName.GetAssemblyName(path);
