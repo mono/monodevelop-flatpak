@@ -1,3 +1,15 @@
+diff --git a/src/Build/Microsoft.Build.csproj b/src/Build/Microsoft.Build.csproj
+index 4ec2fb7..9188da7 100644
+--- a/src/Build/Microsoft.Build.csproj
++++ b/src/Build/Microsoft.Build.csproj
+@@ -764,6 +764,7 @@
+     <Reference Include="System.Core" />
+     <Reference Include="System.Xml" />
+     <Reference Include="System.Configuration" />
++    <Reference Include="System.Reflection.Metadata" />
+     <Reference Include="System.Runtime">
+       <HintPath>$(FrameworkPathOverride)\System.Runtime.dll</HintPath>
+     </Reference>
 diff --git a/src/Shared/AssemblyNameExtension.cs b/src/Shared/AssemblyNameExtension.cs
 index 529335c..1d42865 100644
 --- a/src/Shared/AssemblyNameExtension.cs
