@@ -32,7 +32,7 @@ index 7d861f2..587a18c 100644
      },
      "netcoreapp1.0": {
 diff --git a/src/Shared/AssemblyNameExtension.cs b/src/Shared/AssemblyNameExtension.cs
-index 529335c..5fa15ba 100644
+index 529335c..ce2e30d 100644
 --- a/src/Shared/AssemblyNameExtension.cs
 +++ b/src/Shared/AssemblyNameExtension.cs
 @@ -12,7 +12,7 @@ using System.Collections.Generic;
@@ -44,16 +44,19 @@ index 529335c..5fa15ba 100644
  using System.Reflection.PortableExecutable;
  using System.Reflection.Metadata;
  #endif
-@@ -130,7 +130,7 @@ namespace Microsoft.Build.Shared
+@@ -129,8 +129,10 @@ namespace Microsoft.Build.Shared
+         /// <returns></returns>
          internal static AssemblyNameExtension GetAssemblyNameEx(string path)
          {
++            Console.WriteLine ("MONODEBUG: Entering GetAssemblyNameEx with path=" + path);
++
              AssemblyName assemblyName = null;
 -#if FEATURE_ASSEMBLY_LOADFROM
 +#if FEATURE_ASSEMBLY_LOADFROM && !MONO
              try
              {
                  assemblyName = AssemblyName.GetAssemblyName(path);
-@@ -158,7 +158,16 @@ namespace Microsoft.Build.Shared
+@@ -158,11 +160,21 @@ namespace Microsoft.Build.Shared
                  assemblyName = new AssemblyName();
                  assemblyName.Name = metadataReader.GetString(entry.Name);
                  assemblyName.Version = entry.Version;
@@ -71,6 +74,11 @@ index 529335c..5fa15ba 100644
                  assemblyName.SetPublicKey(metadataReader.GetBlobBytes(entry.PublicKey));
                  assemblyName.Flags = (AssemblyNameFlags)(int)entry.Flags;
              }
+ #endif
++            Console.WriteLine("MONODEBUG: Exiting GetAssemblyNameEx with assemblyName=" + assemblyName);
+             if (assemblyName == null)
+             {
+                 return null;
 diff --git a/src/Utilities/project.json b/src/Utilities/project.json
 index 24fd438..bf52ecd 100644
 --- a/src/Utilities/project.json
