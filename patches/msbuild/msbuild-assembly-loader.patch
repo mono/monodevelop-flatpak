@@ -1,28 +1,22 @@
 diff --git a/src/Shared/AssemblyNameExtension.cs b/src/Shared/AssemblyNameExtension.cs
-index 529335c8..4b4c8277 100644
+index 529335c..1d42865 100644
 --- a/src/Shared/AssemblyNameExtension.cs
 +++ b/src/Shared/AssemblyNameExtension.cs
-@@ -859,6 +859,11 @@ namespace Microsoft.Build.Shared
-             return asString;
-         }
- 
-+        internal string ToString2()
-+        {
-+            return $"asAssemblyName: '{asAssemblyName}', asString: {asString}, isSimpleName: {isSimpleName}";
-+        }
-+
-         /// <summary>
-         /// Compare the fields of this with that if they are not null.
-         /// </summary>
-diff --git a/src/Tasks/AssemblyDependency/Resolver.cs b/src/Tasks/AssemblyDependency/Resolver.cs
-index ef5b4c0e..6b12e687 100644
---- a/src/Tasks/AssemblyDependency/Resolver.cs
-+++ b/src/Tasks/AssemblyDependency/Resolver.cs
-@@ -132,6 +132,7 @@ namespace Microsoft.Build.Tasks
-                 considered.SearchPath = searchPathElement;
-             }
- 
-+            Console.WriteLine ($"MSB: ResolveAsFile fullPath: {fullPath}, assemblyName(Extension): {assemblyName?.ToString2()}");
-             if (FileMatchesAssemblyName(assemblyName, isPrimaryProjectReference, wantSpecificVersion, allowMismatchBetweenFusionNameAndFileName, fullPath, considered))
+@@ -12,7 +12,7 @@ using System.Collections.Generic;
+ using System.Runtime.Serialization;
+ #endif
+ using System.IO;
+-#if !FEATURE_ASSEMBLY_LOADFROM
++#if !FEATURE_ASSEMBLY_LOADFROM || MONO
+ using System.Reflection.PortableExecutable;
+ using System.Reflection.Metadata;
+ #endif
+@@ -130,7 +130,7 @@ namespace Microsoft.Build.Shared
+         internal static AssemblyNameExtension GetAssemblyNameEx(string path)
+         {
+             AssemblyName assemblyName = null;
+-#if FEATURE_ASSEMBLY_LOADFROM
++#if FEATURE_ASSEMBLY_LOADFROM && !MONO
+             try
              {
-                 return true;
+                 assemblyName = AssemblyName.GetAssemblyName(path);
