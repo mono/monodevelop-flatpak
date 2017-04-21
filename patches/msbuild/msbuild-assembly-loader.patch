@@ -32,7 +32,7 @@ index 7d861f2..587a18c 100644
      },
      "netcoreapp1.0": {
 diff --git a/src/Shared/AssemblyNameExtension.cs b/src/Shared/AssemblyNameExtension.cs
-index 529335c..ce2e30d 100644
+index 529335c..bfa7665 100644
 --- a/src/Shared/AssemblyNameExtension.cs
 +++ b/src/Shared/AssemblyNameExtension.cs
 @@ -12,7 +12,7 @@ using System.Collections.Generic;
@@ -44,11 +44,12 @@ index 529335c..ce2e30d 100644
  using System.Reflection.PortableExecutable;
  using System.Reflection.Metadata;
  #endif
-@@ -129,8 +129,10 @@ namespace Microsoft.Build.Shared
+@@ -129,8 +129,11 @@ namespace Microsoft.Build.Shared
          /// <returns></returns>
          internal static AssemblyNameExtension GetAssemblyNameEx(string path)
          {
-+            Console.WriteLine ("MONODEBUG: Entering GetAssemblyNameEx with path=" + path + ", " + Environment.StackTrace);
++            Console.WriteLine ("MONODEBUG: Entering GetAssemblyNameEx with path=" + path);
++            path = path.Replace ("\\", "/");
 +
              AssemblyName assemblyName = null;
 -#if FEATURE_ASSEMBLY_LOADFROM
@@ -56,7 +57,15 @@ index 529335c..ce2e30d 100644
              try
              {
                  assemblyName = AssemblyName.GetAssemblyName(path);
-@@ -158,11 +160,21 @@ namespace Microsoft.Build.Shared
+@@ -148,6 +151,7 @@ namespace Microsoft.Build.Shared
+                 // Its pretty hard to get here, also since we do a file existence check right before calling this method so it can only happen if the file got deleted between that check and this call.
+             }
+ #else
++            try {
+             using (var stream = File.OpenRead(path))
+             using (var peFile = new PEReader(stream))
+             {
+@@ -158,11 +162,22 @@ namespace Microsoft.Build.Shared
                  assemblyName = new AssemblyName();
                  assemblyName.Name = metadataReader.GetString(entry.Name);
                  assemblyName.Version = entry.Version;
@@ -74,6 +83,7 @@ index 529335c..ce2e30d 100644
                  assemblyName.SetPublicKey(metadataReader.GetBlobBytes(entry.PublicKey));
                  assemblyName.Flags = (AssemblyNameFlags)(int)entry.Flags;
              }
++            } catch (Exception ex) { Console.WriteLine("MONODEBUG: got exception: " + ex); throw; }
  #endif
 +            Console.WriteLine("MONODEBUG: Exiting GetAssemblyNameEx with assemblyName=" + assemblyName);
              if (assemblyName == null)
