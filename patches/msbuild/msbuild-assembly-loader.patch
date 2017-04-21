@@ -48,7 +48,7 @@ index 529335c..ce2e30d 100644
          /// <returns></returns>
          internal static AssemblyNameExtension GetAssemblyNameEx(string path)
          {
-+            Console.WriteLine ("MONODEBUG: Entering GetAssemblyNameEx with path=" + path);
++            Console.WriteLine ("MONODEBUG: Entering GetAssemblyNameEx with path=" + path + ", " + Environment.StackTrace);
 +
              AssemblyName assemblyName = null;
 -#if FEATURE_ASSEMBLY_LOADFROM
