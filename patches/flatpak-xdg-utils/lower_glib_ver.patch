@@ -1,0 +1,12 @@
+diff -urNad flatpak-xdg-utils-0.1.orig/configure.ac flatpak-xdg-utils-0.1/configure.ac
+--- flatpak-xdg-utils-0.1.orig/configure.ac	2017-03-22 23:11:58.000000000 +0000
++++ flatpak-xdg-utils-0.1/configure.ac	2017-05-03 13:28:41.267334393 +0100
+@@ -32,7 +32,7 @@
+ LT_PREREQ([2.2.6])
+ LT_INIT([disable-static])
+ 
+-PKG_CHECK_MODULES(FLATPAK_XDG_UTILS, [gio-2.0 >= 2.50])
++PKG_CHECK_MODULES(FLATPAK_XDG_UTILS, [gio-2.0 >= 2.48])
+ 
+ AC_CONFIG_FILES([
+   Makefile
