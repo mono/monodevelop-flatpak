@@ -261,7 +261,23 @@
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
                     "branch": "4.1.8"
-                }
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-enable-jit-tracking-for-portable-pdb.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-fix-mdb-support.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-Fix-mono-gac-location.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-fix-xbuild-check.patch"
+                },
             ]
         },
         {
