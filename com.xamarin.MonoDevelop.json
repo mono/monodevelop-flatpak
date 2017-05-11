@@ -277,7 +277,7 @@
                 {
                     "type": "patch",
                     "path": "patches/fsharp/fsharp-fix-xbuild-check.patch"
-                },
+                }
             ]
         },
         {
