@@ -260,7 +260,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
-                    "branch": "4.1.8"
+                    "branch": "991186f6c95b30a80f217b9319354b32c86212de"
                 },
                 {
                     "type": "patch",
