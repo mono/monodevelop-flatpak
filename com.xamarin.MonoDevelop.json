@@ -17,6 +17,10 @@
         "--filesystem=/media", "--filesystem=/mnt", "--filesystem=/tmp",
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
+        /* audio in the emulator */
+        "--socket=pulseaudio",
+        /* -dev-kvm for emulators -dev-bus-usb for physical devices */
+        "--device=all",
         /* Network access */
         "--share=network",
         /* dbus# bug, system bus access needed for session bus to load */
