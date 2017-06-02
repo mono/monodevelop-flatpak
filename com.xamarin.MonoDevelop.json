@@ -120,6 +120,20 @@
             ]
         },
         {
+            "name": "webkitgtk",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man",
+                            "--with-gtk=2.0",
+                            "--disable-webkit2"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://webkitgtk.org/releases/webkitgtk-2.4.11.tar.xz",
+                    "sha256": "588aea051bfbacced27fdfe0335a957dca839ebe36aa548df39c7bbafdb65bf7"
+                }
+            ]
+        },
+        {
             "name": "xamarin-gtk-theme",
             "config-opts": ["--disable-gtk-doc",
                             "--enable-introspection=no",
@@ -258,6 +272,18 @@
             ]
         },
         {
+            "name": "webkit-sharp",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.mono-project.com/sources/webkit-sharp/webkit-sharp-0.3.tar.bz2",
+                    "sha256": "6633630b6e4834b0f93726570d1c97e884470e3c400ae929cca2f1376b7b959a"
+                }
+            ]
+        },
+        {
             "name": "fsharp",
             "no-parallel-make": true,
             "sources": [
@@ -323,6 +349,18 @@
                     "type": "git",
                     "url": "git://github.com/mono/xsp.git",
                     "branch": "4.4"
+                }
+            ]
+        },
+        {
+            "name": "mono-tools",
+            "config-opts": ["--disable-gtk-doc",
+                            "--disable-man"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.mono-project.com/sources/mono-tools/mono-tools-4.2.tar.gz",
+                    "sha256": "499e4f945d2198858515f625478ca1057cad3150de995f7d82bdb2a85b8ddcaa"
                 }
             ]
         },
