@@ -373,6 +373,10 @@
                     "type": "archive",
                     "url": "http://download.mono-project.com/sources/mono-tools/mono-tools-4.2.tar.gz",
                     "sha256": "499e4f945d2198858515f625478ca1057cad3150de995f7d82bdb2a85b8ddcaa"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/mono-tools/only_build_docbrowser.patch"
                 }
             ]
         },

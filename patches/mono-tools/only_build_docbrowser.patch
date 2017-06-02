@@ -1,0 +1,11 @@
+diff --git a/Makefile.am b/Makefile.am
+index bd62acd3..f75cc5a8 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,5 +1,4 @@
+-SUBDIRS= po docbrowser asn1view create-native-map ilcontrast gui-compare \
+-	gendarme mperfmon gsharp webdoc minvoke Mono.Profiler
++SUBDIRS= po docbrowser
+ 
+ #capture aclocal flags for autoreconf
+ ACLOCAL_AMFLAGS=$(ACLOCAL_FLAGS)
