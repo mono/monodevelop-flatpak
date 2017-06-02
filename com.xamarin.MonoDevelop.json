@@ -120,6 +120,18 @@
             ]
         },
         {
+            "name": "libsecret",
+            "config-opts": ["--disable-gtk-doc",
+                            "--enable-introspection=no"],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://git.gnome.org/libsecret",
+                    "branch": "0.18.5"
+                }
+            ]
+        },
+        {
             "name": "webkitgtk",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man",
