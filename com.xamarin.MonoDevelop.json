@@ -366,14 +366,13 @@
         },
         {
             "name": "mono-tools",
-            "no-autogen": "false",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "http://download.mono-project.com/sources/mono-tools/mono-tools-4.2.tar.gz",
-                    "sha256": "499e4f945d2198858515f625478ca1057cad3150de995f7d82bdb2a85b8ddcaa"
+                    "type": "git",
+                    "url": "git://github.com/mono/mono-tools.git",
+                    "branch": "4.2"
                 },
                 {
                     "type": "patch",
