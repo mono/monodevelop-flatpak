@@ -366,6 +366,7 @@
         },
         {
             "name": "mono-tools",
+            "no-autogen": "false",
             "config-opts": ["--disable-gtk-doc",
                             "--disable-man"],
             "sources": [
