@@ -289,9 +289,13 @@
                             "--disable-man"],
             "sources": [
                 {
-                    "type": "archive",
-                    "url": "http://download.mono-project.com/sources/webkit-sharp/webkit-sharp-0.3.tar.bz2",
-                    "sha256": "6633630b6e4834b0f93726570d1c97e884470e3c400ae929cca2f1376b7b959a"
+                    "type": "git",
+                    "url": "git://github.com/mono/webkit-sharp.git",
+                    "branch": "0.3"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/webkit-sharp/fix_dllmap.patch"
                 }
             ]
         },
