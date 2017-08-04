@@ -478,7 +478,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/mono/msbuild.git",
-                    "branch": "d15.2"
+                    "branch": "d15.3"
                 },
                 {
                     "type": "file",
