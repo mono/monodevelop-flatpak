@@ -1,6 +1,6 @@
 {
     "app-id": "com.xamarin.MonoDevelop",
-    "runtime": "org.freedesktop.Platform",
+    "runtime": "org.freedesktop.Sdk",
     "runtime-version": "1.4",
     "sdk": "org.freedesktop.Sdk",
     "command": "monodevelop",
@@ -17,6 +17,8 @@
         "--filesystem=/media", "--filesystem=/mnt", "--filesystem=/tmp",
         /* X11 + XShm access */
         "--share=ipc", "--socket=x11",
+        /* Dev tools like GDB*/
+        "--allow=devel",
         /* audio in the emulator */
         "--socket=pulseaudio",
         /* -dev-kvm for emulators -dev-bus-usb for physical devices */
