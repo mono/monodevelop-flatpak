@@ -346,8 +346,8 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git://github.com/NuGet/NuGet2",
-                    "branch": "2.12"
+                    "url": "git://github.com/mono/nuget",
+                    "branch": "2.12-for-mono"
                 },
                 {
                     "type": "file",
