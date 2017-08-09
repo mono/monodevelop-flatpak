@@ -491,7 +491,7 @@
         },
         {
             "name": "libhostfxr",
-            "no-autogen": "true",
+            "no-autogen": true,
             "sources": [
                 {
                     "type": "git",
