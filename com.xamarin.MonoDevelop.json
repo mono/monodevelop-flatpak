@@ -495,7 +495,7 @@
             "sources": [
                 {
                     "type": "git",
-                    "url": "git:github.com/mono/linux-packaging-core-setup.git",
+                    "url": "git://github.com/mono/linux-packaging-core-setup.git",
                     "branch": "master"
                 },
                 {
