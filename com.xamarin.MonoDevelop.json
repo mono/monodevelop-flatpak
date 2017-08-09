@@ -517,11 +517,6 @@
                 },
                 {
                     "type": "patch",
-                    "use-git": true,
-                    "path": "patches/monodevelop/187340db47c626b9222796cf354f0f0023d875df.diff"
-                },
-                {
-                    "type": "patch",
                     "path": "patches/monodevelop/buildinfo.patch"
                 }
             ]
