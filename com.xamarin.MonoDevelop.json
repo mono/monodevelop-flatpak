@@ -490,6 +490,22 @@
             ]
         },
         {
+            "name": "libhostfxr",
+            "no-autogen": "true",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git:github.com/mono/linux-packaging-core-setup.git",
+                    "branch": "master"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/libhostfxr/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
             "name": "monodevelop",
             "no-parallel-make": true,
             "sources": [
