@@ -499,6 +499,14 @@
                     "branch": "master"
                 },
                 {
+                    "type": "patch",
+                    "path": "patches/libhostfxr/dont_use_add_compile_options.diff"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/libhostfxr/avoid_cmake_unknown_command.patch"
+                },
+                {
                     "type": "file",
                     "path": "patches/libhostfxr/Makefile",
                     "dest-filename": "Makefile"
