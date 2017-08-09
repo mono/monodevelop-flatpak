@@ -1,0 +1,12 @@
+diff --git a/main/Makefile.am b/main/Makefile.am
+index 26f87bad8a..311483a4e0 100644
+--- a/main/Makefile.am
++++ b/main/Makefile.am
+@@ -28,6 +28,7 @@ NUGET_RESTORE = mono external/nuget-binary/nuget.exe restore -DisableParallelPro
+ #       see: https://github.com/kzu/NuGet.Restore
+ restore-packages:
+ 	@$(NUGET_RESTORE)
++	cd external/mono-addins && $(NUGET_RESTORE)
+ 	msbuild /t:Restore /p:RestoreDisableParallel=true external/RefactoringEssentials/RefactoringEssentials.2017/RefactoringEssentials.csproj
+ 
+ vcrevision:

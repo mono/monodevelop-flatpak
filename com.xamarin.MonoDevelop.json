@@ -532,6 +532,10 @@
                 },
                 {
                     "type": "patch",
+                    "path": "patches/monodevelop/restore-mono-addins.patch"
+                },
+                {
+                    "type": "patch",
                     "path": "patches/monodevelop/regenerate-mdaddins-at-startup.patch"
                 },
                 {
