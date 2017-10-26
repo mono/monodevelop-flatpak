@@ -247,10 +247,6 @@
                     "path": "patches/mono/hardcode_localstore_to_appdir.patch"
                 },
                 {
-                    "type": "patch",
-                    "path": "patches/mono/fix-project-builds-linux.patch"
-                },
-                {
                     "type": "shell",
                     "commands": [ "./autogen.sh",
                                   "make get-monolite-latest"
