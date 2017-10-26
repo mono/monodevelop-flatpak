@@ -1,0 +1,30 @@
+Index: xamarin-pkg-fsharp/lib/bootstrap/src/FSharp.SRGen.Build.Tasks/FSharp.SRGen.Build.Tasks.fsproj
+===================================================================
+--- xamarin-pkg-fsharp.orig/lib/bootstrap/src/FSharp.SRGen.Build.Tasks/FSharp.SRGen.Build.Tasks.fsproj	2015-04-27 23:18:48.694696037 +0100
++++ xamarin-pkg-fsharp/lib/bootstrap/src/FSharp.SRGen.Build.Tasks/FSharp.SRGen.Build.Tasks.fsproj	2015-04-27 23:36:33.262738258 +0100
+@@ -48,7 +48,7 @@
+     <Reference Include="System.Core" />
+   </ItemGroup>
+       <PropertyGroup>
+-        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
++        <FSharpTargetsPath>..\..\..\release\Microsoft.FSharp.Targets</FSharpTargetsPath>
+       </PropertyGroup>
+   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+-</Project>
+\ No newline at end of file
++</Project>
+Index: xamarin-pkg-fsharp/lib/bootstrap/src/FsSrGen/FsSrGen.fsproj
+===================================================================
+--- xamarin-pkg-fsharp.orig/lib/bootstrap/src/FsSrGen/FsSrGen.fsproj	2015-04-27 23:18:48.694696037 +0100
++++ xamarin-pkg-fsharp/lib/bootstrap/src/FsSrGen/FsSrGen.fsproj	2015-04-27 23:36:45.202738731 +0100
+@@ -47,7 +47,7 @@
+     <Reference Include="System.Xml" />
+   </ItemGroup>
+       <PropertyGroup>
+-        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
++        <FSharpTargetsPath>..\..\..\release\Microsoft.FSharp.Targets</FSharpTargetsPath>
+       </PropertyGroup>
+   <Import Project="$(FSharpTargetsPath)" Condition="Exists('$(FSharpTargetsPath)')" />
+-</Project>
+\ No newline at end of file
++</Project>

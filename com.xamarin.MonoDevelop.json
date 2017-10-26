@@ -312,19 +312,11 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/fsharp/fsharp-enable-jit-tracking-for-portable-pdb.patch"
+                    "path": "patches/fsharp/fsharp-install-netsdk-targets.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "patches/fsharp/fsharp-fix-mdb-support.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fsharp/fsharp-Fix-mono-gac-location.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fsharp/fsharp-fix-xbuild-check.patch"
+                    "path": "patches/fsharp/fix-bootstrap-src-targets-path.patch"
                 }
             ]
         },
