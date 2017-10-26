@@ -244,10 +244,6 @@
                 },
                 {
                     "type": "patch",
-                    "path": "patches/mono/0001-btls-Disable-BUILD_SHARED_LIBS-while-building-boring.patch"
-                },
-                {
-                    "type": "patch",
                     "path": "patches/mono/hardcode_localstore_to_appdir.patch"
                 },
                 {
