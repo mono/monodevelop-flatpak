@@ -308,7 +308,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
-                    "branch": "991186f6c95b30a80f217b9319354b32c86212de"
+                    "branch": "4.1.25"
                 },
                 {
                     "type": "patch",
@@ -472,7 +472,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/mono/msbuild.git",
-                    "branch": "d15.3"
+                    "branch": "mono-2017-06"
                 },
                 {
                     "type": "file",
