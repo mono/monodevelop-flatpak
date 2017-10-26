@@ -302,6 +302,35 @@
             ]
         },
         {
+            "name": "msbuild",
+            "no-autogen": true,
+            "build-options": {
+                "build-args": [
+                    "--filesystem=%WORKSPACE%@tmp"
+                ],
+                "env": {
+                    "__PUBLISH_RID": "ubuntu.14.04-x64",
+                    "TMPDIR": "%WORKSPACE%@tmp",
+                    "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
+                    "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
+                    "HOME": "%WORKSPACE%@tmp",
+                    "XDG_DATA_HOME": "%WORKSPACE%@tmp"
+                }
+            },
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/msbuild.git",
+                    "branch": "mono-2017-06"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/msbuild/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
             "name": "fsharp",
             "no-parallel-make": true,
             "sources": [
@@ -441,35 +470,6 @@
                 {
                     "type": "patch",
                     "path": "patches/flatpak-xdg-utils/lower_glib_ver.patch"
-                }
-            ]
-        },
-        {
-            "name": "msbuild",
-            "no-autogen": true,
-            "build-options": {
-                "build-args": [
-                    "--filesystem=%WORKSPACE%@tmp"
-                ],
-                "env": {
-                    "__PUBLISH_RID": "ubuntu.14.04-x64",
-                    "TMPDIR": "%WORKSPACE%@tmp",
-                    "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
-                    "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
-                    "HOME": "%WORKSPACE%@tmp",
-                    "XDG_DATA_HOME": "%WORKSPACE%@tmp"
-                }
-            },
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://github.com/mono/msbuild.git",
-                    "branch": "mono-2017-06"
-                },
-                {
-                    "type": "file",
-                    "path": "patches/msbuild/Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         },
