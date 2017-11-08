@@ -122,6 +122,30 @@
             ]
         },
         {
+            "name": "vte",
+            "config-opts": ["--disable-hal", "--disable-gdu","--disable-gcr","--disable-obexftp",
+                            "--disable-avahi","--disable-documentation","--disable-admin"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://download.gnome.org/sources/vte/0.50/vte-0.50.2.tar.xz",
+                    "sha256": "79dd316bfaff48f2fb74d066baae0d830e1f44436796fe410a57297e5c5f09cf"
+                }
+            ]
+        },
+        {
+            "name": "lxterminal",
+            "config-opts": ["--disable-hal", "--disable-gdu","--disable-gcr","--disable-obexftp",
+                            "--disable-avahi","--disable-documentation","--disable-admin"],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://downloads.sourceforge.net/project/lxde/LXTerminal%20%28terminal%20emulator%29/LXTerminal%200.3.1/lxterminal-0.3.1.tar.xz",
+                    "sha256": "79dd316bfaff48f2fb74d066baae0d830e1f44436796fe410a57297e5c5f09cfcd8df387c2dd40e03b48caacf700820f9421b421954a0ed56395f505411d2c4b"
+                }
+            ]
+        },
+        {
             "name": "libsecret",
             "config-opts": ["--disable-gtk-doc",
                             "--enable-introspection=no"],
