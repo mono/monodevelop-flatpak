@@ -271,10 +271,6 @@
                     "path": "patches/mono/hardcode_localstore_to_appdir.patch"
                 },
                 {
-                    "type": "patch",
-                    "path": "patches/mono/fix-project-builds-linux.patch"
-                },
-                {
                     "type": "shell",
                     "commands": [ "./autogen.sh",
                                   "make get-monolite-latest"
@@ -330,29 +326,76 @@
             ]
         },
         {
+            "name": "libunwind",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz",
+                    "sha256": "1de38ffbdc88bd694d10081865871cd2bfbb02ad8ef9e1606aee18d65532b992"
+                }
+            ]
+        },
+        {
+            "name": "libicu",
+            "no-autogen": true,
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-RHEL6-x64.tgz",
+                    "sha256": "2a73302fa3556a113cd5e3de9c14cf6fc39e308fbe6970af6d84d723bf2c66a3"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/libicu/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
+            "name": "msbuild",
+            "no-autogen": true,
+            "build-options": {
+                "build-args": [
+                    "--filesystem=%WORKSPACE%@tmp"
+                ],
+                "env": {
+                    "__PUBLISH_RID": "ubuntu.14.04-x64",
+                    "TMPDIR": "%WORKSPACE%@tmp",
+                    "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
+                    "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
+                    "HOME": "%WORKSPACE%@tmp",
+                    "XDG_DATA_HOME": "%WORKSPACE%@tmp"
+                }
+            },
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/msbuild.git",
+                    "branch": "mono-2017-06"
+                },
+                {
+                    "type": "file",
+                    "path": "patches/msbuild/Makefile",
+                    "dest-filename": "Makefile"
+                }
+            ]
+        },
+        {
             "name": "fsharp",
             "no-parallel-make": true,
             "sources": [
                 {
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
-                    "branch": "991186f6c95b30a80f217b9319354b32c86212de"
+                    "branch": "4.1.25"
                 },
                 {
                     "type": "patch",
-                    "path": "patches/fsharp/fsharp-enable-jit-tracking-for-portable-pdb.patch"
+                    "path": "patches/fsharp/fsharp-install-netsdk-targets.patch"
                 },
                 {
                     "type": "patch",
-                    "path": "patches/fsharp/fsharp-fix-mdb-support.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fsharp/fsharp-Fix-mono-gac-location.patch"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/fsharp/fsharp-fix-xbuild-check.patch"
+                    "path": "patches/fsharp/fix-bootstrap-src-targets-path.patch"
                 }
             ]
         },
@@ -441,32 +484,6 @@
             ]
         },
         {
-            "name": "libunwind",
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://download.savannah.gnu.org/releases/libunwind/libunwind-1.2.tar.gz",
-                    "sha256": "1de38ffbdc88bd694d10081865871cd2bfbb02ad8ef9e1606aee18d65532b992"
-                }
-            ]
-        },
-        {
-            "name": "libicu",
-            "no-autogen": true,
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://download.icu-project.org/files/icu4c/52.1/icu4c-52_1-RHEL6-x64.tgz",
-                    "sha256": "2a73302fa3556a113cd5e3de9c14cf6fc39e308fbe6970af6d84d723bf2c66a3"
-                },
-                {
-                    "type": "file",
-                    "path": "patches/libicu/Makefile",
-                    "dest-filename": "Makefile"
-                }
-            ]
-        },
-        {
             "name": "flatpak-xdg-utils",
             "sources": [
                 {
@@ -477,35 +494,6 @@
                 {
                     "type": "patch",
                     "path": "patches/flatpak-xdg-utils/lower_glib_ver.patch"
-                }
-            ]
-        },
-        {
-            "name": "msbuild",
-            "no-autogen": true,
-            "build-options": {
-                "build-args": [
-                    "--filesystem=%WORKSPACE%@tmp"
-                ],
-                "env": {
-                    "__PUBLISH_RID": "ubuntu.14.04-x64",
-                    "TMPDIR": "%WORKSPACE%@tmp",
-                    "XDG_CACHE_HOME": "%WORKSPACE%@tmp",
-                    "XDG_CONFIG_HOME": "%WORKSPACE%@tmp",
-                    "HOME": "%WORKSPACE%@tmp",
-                    "XDG_DATA_HOME": "%WORKSPACE%@tmp"
-                }
-            },
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "git://github.com/mono/msbuild.git",
-                    "branch": "d15.3"
-                },
-                {
-                    "type": "file",
-                    "path": "patches/msbuild/Makefile",
-                    "dest-filename": "Makefile"
                 }
             ]
         },
