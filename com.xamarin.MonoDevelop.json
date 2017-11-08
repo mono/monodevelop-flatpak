@@ -527,6 +527,7 @@
             "sources": [
                 {
                     "type": "git",
+                    "disable-shallow-clone": true,
                     "url": "git://github.com/mono/monodevelop.git",
                     "branch": "monodevelop-6.1.1.15"
                 },
