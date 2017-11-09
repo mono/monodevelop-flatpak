@@ -554,6 +554,11 @@
                 },
                 {
                     "type": "patch",
+                    "use-git": true,
+                    "path": "patches/monodevelop/sandbox_escape.patch"
+                },
+                {
+                    "type": "patch",
                     "path": "patches/monodevelop/buildinfo.patch"
                 }
             ]
