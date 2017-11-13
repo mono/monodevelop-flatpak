@@ -414,9 +414,9 @@
             "no-autogen": true,
             "sources": [
                 {
-                    "type": "git",
-                    "url": "git://github.com/mono/nuget",
-                    "branch": "2.12-for-mono"
+                    "type": "archive",
+                    "url": "http://download.mono-project.com/sources/nuget/nuget-4.3.0.4406.bin.tar.xz",
+                    "sha256": "ca9f29895dbacf6a71801cdb2f89cfe5f7c37bf09c38712db8a9763e5d4aa209"
                 },
                 {
                     "type": "file",
