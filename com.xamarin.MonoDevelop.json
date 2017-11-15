@@ -489,7 +489,7 @@
                 "env": {
                     "GMCS": "/app/bin/mcs"
                 }
-            }
+            },
             "sources": [
                 {
                     "type": "git",
