@@ -484,6 +484,21 @@
             ]
         },
         {
+            "name": "dbus-sharp-glib",
+            "build-options": {
+                "env": {
+                    "GMCS": "/app/bin/mcs"
+                }
+            }
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "git://github.com/mono/dbus-sharp-glib.git",
+                    "branch": "master"
+                }
+            ]
+        },
+        {
             "name": "flatpak-xdg-utils",
             "sources": [
                 {
