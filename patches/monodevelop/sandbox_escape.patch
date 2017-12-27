@@ -1,54 +1,77 @@
+diff --git a/main/contrib/ICSharpCode.Decompiler/ICSharpCode.Decompiler.csproj b/main/contrib/ICSharpCode.Decompiler/ICSharpCode.Decompiler.csproj
+index 7bf6f72017..f7b93565c8 100644
+--- a/main/contrib/ICSharpCode.Decompiler/ICSharpCode.Decompiler.csproj
++++ b/main/contrib/ICSharpCode.Decompiler/ICSharpCode.Decompiler.csproj
+@@ -135,7 +135,7 @@
+     </ProjectReference>
+   </ItemGroup>
+   <ItemGroup />
+-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
++  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+   <ItemGroup>
+     <Reference Include="System" />
+     <Reference Include="System.Core" />
 diff --git a/main/src/addins/GnomePlatform/GnomePlatform.cs b/main/src/addins/GnomePlatform/GnomePlatform.cs
-index c5c77b58e1..45348b2baf 100644
+index c5c77b58e1..95b26ec590 100644
 --- a/main/src/addins/GnomePlatform/GnomePlatform.cs
 +++ b/main/src/addins/GnomePlatform/GnomePlatform.cs
-@@ -177,53 +177,21 @@ namespace MonoDevelop.Platform
- 				psi.EnvironmentVariables [env.Key] = env.Value;
- 			
- 			ProcessWrapper proc = new ProcessWrapper ();
--			if (terminal_command.Contains ("gnome-terminal")) {
--				var parameter = String.Format ("--app-id {0}", GenerateAppId (consoleGuid));
--				var terminalProcessStartInfo = new ProcessStartInfo ("/usr/lib/gnome-terminal/gnome-terminal-server", parameter) {
--					CreateNoWindow = true,
--					UseShellExecute = false,
--				};
--				proc.StartInfo = terminalProcessStartInfo;
--				proc.Start ();
--				proc.WaitForExit (500); //give the terminal server some warm up time
-+			proc.StartInfo = psi;
-+			proc.Start ();
+@@ -34,11 +34,19 @@ using System.Diagnostics;
+ using System.IO;
+ using MonoDevelop.Core.Execution;
+ using MonoDevelop.Core;
++using DBus;
++using org.freedesktop.DBus;
++using System.Linq;
++using System.Text;
  
--				Process.Start (psi);
--			} else {
--				proc.StartInfo = psi;
--				proc.Start ();
--			}
- 			return proc.ProcessAsyncOperation;
+ namespace MonoDevelop.Platform
+ {
+ 	public class GnomePlatform : PlatformService
+ 	{
++		public override bool IsSandboxed {
++			get { return File.Exists ("/.flatpak-info"); }
++		}
++
+ 		static GnomePlatform ()
+ 		{
  		}
+@@ -80,6 +88,19 @@ namespace MonoDevelop.Platform
+ 			return base.OnGetMimeTypeIsText (mimeType);
+ 		}
+ 
++		public override void OpenFile (string filename) {
++			if(IsSandboxed)
++				GnomeDesktopApplication.FlatProcessStart (filename);
++			else
++				Process.Start (filename);
++		}
++
++		public override void OpenFolder (FilePath folderPath, FilePath [] selectFiles) {
++			if (IsSandboxed)
++				GnomeDesktopApplication.FlatProcessStart (folderPath);
++			else
++				Process.Start (folderPath);
++		}
+ 
+ 		public override void ShowUrl (string url)
+ 		{
+@@ -218,12 +239,26 @@ namespace MonoDevelop.Platform
+  		}
  		
- #region Terminal runner implementations
- 		
--		private static string GnomeTerminalRunner (string command, string args, string dir, string title, bool pause, Guid applicationId)
--		{
--			string extra_commands = pause 
--				? BashPause.Replace ("'", "\\\"")
--				: String.Empty;
--			
--			return String.Format (@" --app-id {5} --name ""{4}"" -e ""bash -c 'cd {3} ; {0} {1} ; {2}'""",
--				command,
--				EscapeArgs (args),
--				extra_commands,
--				EscapeDir (dir),
--				title,
--				GenerateAppId (applicationId));
--		}
--
--		private static string GenerateAppId (Guid applicationId)
-- 		{
--			return String.Format("mono.develop.id{0}", applicationId.ToString ().Replace ("-", ""));
-- 		}
--		
--		private static string XtermRunner (string command, string args, string dir, string title, bool pause, Guid applicationId)
+ 		private static string XtermRunner (string command, string args, string dir, string title, bool pause, Guid applicationId)
++		{
++			string extra_commands = pause
++				? BashPause
++				: String.Empty;
++
++			return String.Format (@" -title ""{4}"" -e bash -c ""cd {3} ; '{0}' {1} ; {2}""",
++				command,
++				EscapeArgs (args),
++				extra_commands,
++				EscapeDir (dir),
++				title);
++		}
++
 +		private static string LXterminalRunner (string command, string args, string dir, string title, bool pause, Guid applicationId)
  		{
  			string extra_commands = pause 
@@ -60,81 +83,66 @@ index c5c77b58e1..45348b2baf 100644
  				command,
  				EscapeArgs (args),
  				extra_commands,
-@@ -231,30 +199,8 @@ namespace MonoDevelop.Platform
- 				title);
+@@ -257,6 +292,10 @@ namespace MonoDevelop.Platform
+ 			return string.Format(@" --nofork --workdir=""{0}""", EscapeDir(dir));
  		}
  
--		private static string KdeTerminalRunner (string command, string args, string dir, string title, bool pause, Guid applicationId)
--		{
--			string extra_commands = pause 
--				? BashPause.Replace ("'", "\"")
--					: String.Empty;
--
--			return String.Format (@" --nofork --caption ""{4}"" --workdir=""{3}"" -e ""bash"" -c '{0} {1} ; {2}'",
--			                      command,
--			                      args,
--			                      extra_commands,
--			                      EscapeDir (dir),
--			                      title);
--		}
--
--		private static string GnomeTerminalOpenFolderRunner (string dir) {
--			return string.Format(@" --working-directory=""{0}""", EscapeDir(dir));
--		}
--
--		private static string XtermOpenFolderRunner (string dir) {
--			return string.Format(@" -e bash -c ""cd {0}""", EscapeDir(dir));
--		}
--
--		private static string KdeTerminalOpenFolderRunner (string dir) {
--			return string.Format(@" --nofork --workdir=""{0}""", EscapeDir(dir));
 +		private static string LXterminalOpenFolderRunner (string dir) {
-+			return string.Format (@" --working-directory=""{0}""", EscapeDir (dir));
- 		}
- 
++			return string.Format (@" --working-directory=""{0}""", EscapeDir(dir));
++		}
++
  		private static string EscapeArgs (string args)
-@@ -283,34 +229,17 @@ namespace MonoDevelop.Platform
- 			
- 			terminal_probed = true;
- 			
--			string fallback_terminal = PropertyService.Get ("MonoDevelop.Shell", "xterm");
-+			string fallback_terminal = "lxterminal";
- 			string preferred_terminal;
+ 		{
+ 			return args.Replace ("\\", "\\\\").Replace ("\"", "\\\"");
+@@ -288,34 +327,40 @@ namespace MonoDevelop.Platform
  			TerminalRunnerHandler preferred_runner = null;
--			TerminalRunnerHandler fallback_runner = XtermRunner;
-+			TerminalRunnerHandler fallback_runner = LXterminalRunner;
+ 			TerminalRunnerHandler fallback_runner = XtermRunner;
  
- 			TerminalOpenFolderRunnerHandler preferedOpenFolderRunner = null;
--			TerminalOpenFolderRunnerHandler fallbackOpenFolderRunner = XtermOpenFolderRunner;
-+			TerminalOpenFolderRunnerHandler fallbackOpenFolderRunner = LXterminalOpenFolderRunner;
+-			TerminalOpenFolderRunnerHandler preferedOpenFolderRunner = null;
++			TerminalOpenFolderRunnerHandler preferredOpenFolderRunner = null;
+ 			TerminalOpenFolderRunnerHandler fallbackOpenFolderRunner = XtermOpenFolderRunner;
  
 -			if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("GNOME_DESKTOP_SESSION_ID"))) {
--				preferred_terminal = "gnome-terminal";
--				preferred_runner = GnomeTerminalRunner;
++			if(IsSandboxed)
++			{
++				preferred_terminal = "lxterminal";
++				preferred_runner = LXterminalRunner;
++				preferredOpenFolderRunner = LXterminalOpenFolderRunner;
++			}
++			else if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("GNOME_DESKTOP_SESSION_ID"))) {
+ 				preferred_terminal = "gnome-terminal";
+ 				preferred_runner = GnomeTerminalRunner;
 -				preferedOpenFolderRunner = GnomeTerminalOpenFolderRunner;
--			}
--			else if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("MATE_DESKTOP_SESSION_ID"))) {
--				preferred_terminal = "mate-terminal";
--				preferred_runner = GnomeTerminalRunner;
++				preferredOpenFolderRunner = GnomeTerminalOpenFolderRunner;
+ 			}
+ 			else if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("MATE_DESKTOP_SESSION_ID"))) {
+ 				preferred_terminal = "mate-terminal";
+ 				preferred_runner = GnomeTerminalRunner;
 -				preferedOpenFolderRunner = GnomeTerminalOpenFolderRunner;
--			} 
--			else if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("KDE_SESSION_VERSION"))) { 
--				preferred_terminal = "konsole";
--				preferred_runner = KdeTerminalRunner;
++				preferredOpenFolderRunner = GnomeTerminalOpenFolderRunner;
+ 			} 
+ 			else if (!String.IsNullOrEmpty (Environment.GetEnvironmentVariable ("KDE_SESSION_VERSION"))) { 
+ 				preferred_terminal = "konsole";
+ 				preferred_runner = KdeTerminalRunner;
 -				preferedOpenFolderRunner = KdeTerminalOpenFolderRunner;
--			}
--			else {
--				preferred_terminal = fallback_terminal;
--				preferred_runner = fallback_runner;
++				preferredOpenFolderRunner = KdeTerminalOpenFolderRunner;
+ 			}
+ 			else {
+ 				preferred_terminal = fallback_terminal;
+ 				preferred_runner = fallback_runner;
 -				preferedOpenFolderRunner = fallbackOpenFolderRunner;
--			}
-+			preferred_terminal = fallback_terminal;
-+			preferred_runner = fallback_runner;
-+			preferedOpenFolderRunner = fallbackOpenFolderRunner;
++				preferredOpenFolderRunner = fallbackOpenFolderRunner;
+ 			}
  
  			terminal_command = FindExec (preferred_terminal);
  			if (terminal_command != null) {
-@@ -345,7 +274,7 @@ namespace MonoDevelop.Platform
+ 				runner = preferred_runner;
+-				openDirectoryRunner = preferedOpenFolderRunner;
++				openDirectoryRunner = preferredOpenFolderRunner;
+ 				return;
+ 			}
+ 			
+@@ -345,7 +390,7 @@ namespace MonoDevelop.Platform
  		{
  			string path = Environment.GetEnvironmentVariable ("PATH");
  			if (String.IsNullOrEmpty (path)) {
@@ -143,65 +151,129 @@ index c5c77b58e1..45348b2baf 100644
  			}
  
  			// this is super lame, should handle quoting/escaping
-diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
-index 7f0d57ede9..65e3bdf09d 100644
---- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
-+++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
-@@ -32,6 +32,10 @@ using System.Timers;
- using MonoDevelop.Ide.Gui.Dialogs;
- using MonoDevelop.Ide.Gui;
- using MonoDevelop.Components.Commands;
-+using DBus;
-+using org.freedesktop.DBus;
-+using System.Collections.Generic;
-+using System.Text;
- 
- namespace MonoDevelop.Ide.Commands
- {
-@@ -69,7 +73,17 @@ namespace MonoDevelop.Ide.Commands
- 			try {
- 				var profile = MonoDevelop.Core.UserProfile.Current;
- 				if (profile != null && System.IO.Directory.Exists (profile.LogDir))
-+#if LINUX
-+				{
-+					Bus conn = Bus.Session;
-+					MonoDevelop.Core.LoggingService.LogInfo ("UnixFD supported: {0}", conn.UnixFDSupported);
-+					IFlatpak bus = conn.GetObject<IFlatpak> ("org.freedesktop.Flatpak", new ObjectPath ("/org/freedesktop/Flatpak/Development"));
-+					UInt32 mypid = bus.HostCommand (Encoding.ASCII.GetBytes (Environment.GetFolderPath (Environment.SpecialFolder.Personal)), new byte [] [] { Encoding.ASCII.GetBytes ("xdg-open\0"), Encoding.ASCII.GetBytes (profile.LogDir + "\0") }, new Dictionary<UInt32, UnixFD> () { }, new Dictionary<string, string> () { }, 0);
-+				}
-+#else
- 					System.Diagnostics.Process.Start (profile.LogDir);
-+#endif
-+
- 			} catch (Exception ex) {
- 				MonoDevelop.Core.LoggingService.LogError ("Could not open the Log Directory", ex);
- 			}
-@@ -176,4 +190,16 @@ namespace MonoDevelop.Ide.Commands
+@@ -372,7 +417,7 @@ namespace MonoDevelop.Platform
+ 		public GnomeDesktopApplication (string command, string displayName, bool isDefault) : base (command, displayName, isDefault)
+ 		{
  		}
- #endif
- 	}
+-		
 +
-+#if LINUX
-+	[Interface("org.freedesktop.Flatpak.Development")]
-+    public interface IFlatpak : Introspectable
-+    {
-+        UInt32 HostCommand(byte[] cwd_path, byte[][] argv, Dictionary<UInt32, UnixFD> fds, Dictionary<string, string> env, UInt32 flags);
-+        void HostCommandSignal(UInt32 pid, UInt32 signal, bool to_process_group);
-+        event HostCommandExitedHandler HostCommandExited;
-+    }
+ 		string Command {
+ 			get { return Id; }
+ 		}
+@@ -383,7 +428,10 @@ namespace MonoDevelop.Platform
+ 			if (Command.IndexOf ("%f") != -1) {
+ 				foreach (string s in files) {
+ 					string cmd = Command.Replace ("%f", "\"" + s + "\"");
+-					Process.Start (cmd);
++					if (Ide.DesktopService.isSandboxed)
++						FlatProcessStart (cmd);
++					else
++						Process.Start (cmd);
+ 				}
+ 			}
+ 			else if (Command.IndexOf ("%F") != -1) {
+@@ -392,12 +440,43 @@ namespace MonoDevelop.Platform
+ 					fs [n] = "\"" + files [n] + "\"";
+ 				}
+ 				string cmd = Command.Replace ("%F", string.Join (" ", fs));
+-				Process.Start (cmd);
++				if (Ide.DesktopService.isSandboxed)
++					FlatProcessStart (cmd);
++				else
++					Process.Start (cmd);
+ 			} else {
+ 				foreach (string s in files) {
+-					Process.Start (Command, "\"" + s + "\"");
++					if (Ide.DesktopService.isSandboxed)
++						FlatProcessStart (Command, "\"" + s + "\"");
++							else
++						Process.Start (Command, "\"" + s + "\"");
+ 				}
+ 			}
+ 		}
++
++		[Interface ("org.freedesktop.Flatpak.Development")]
++		public interface IFlatpak : Introspectable
++		{
++			UInt32 HostCommand (byte [] cwd_path, byte [] [] argv, Dictionary<UInt32, UnixFD> fds, Dictionary<string, string> env, UInt32 flags);
++			void HostCommandSignal (UInt32 pid, UInt32 signal, bool to_process_group);
++			event HostCommandExitedHandler HostCommandExited;
++		}
++
++		public void FlatProcessStart(string cmd, string args) {
++			FlatProcessStart (cmd + " " + args);
++		}
++
++		public static void FlatProcessStart(string cmd) {
++			Bus conn = Bus.Session;
++			LoggingService.LogInfo ("UnixFD supported: {0}", conn.UnixFDSupported);
++			IFlatpak bus = conn.GetObject<IFlatpak> ("org.freedesktop.Flatpak", new ObjectPath ("/org/freedesktop/Flatpak/Development"));
++			if (String.IsNullOrWhiteSpace (cmd))
++				throw new ArgumentException ("command");
++			byte[][] cmdArray = ("xdg-open " + cmd).Split (' ').Select (s => Encoding.ASCII.GetBytes (s + '\0').ToArray ()).ToArray ();
++			UInt32 mypid = bus.HostCommand (new byte[]{}, cmdArray, new Dictionary<UInt32, UnixFD> () { }, new Dictionary<string, string> () { }, 0);
++		}
 +
 +    public delegate void HostCommandExitedHandler(UInt32 pid, UInt32 exit_status);
-+#endif
++
+ 	}
  }
-diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.csproj b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.csproj
-index 0f0b3d528b..18f9ee9d9c 100644
---- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.csproj
-+++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.csproj
-@@ -231,6 +231,7 @@
-       <HintPath>..\..\..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-       <Private>False</Private>
+diff --git a/main/src/addins/GnomePlatform/GnomePlatform.csproj b/main/src/addins/GnomePlatform/GnomePlatform.csproj
+index 68f543ad30..0aa9f203b4 100644
+--- a/main/src/addins/GnomePlatform/GnomePlatform.csproj
++++ b/main/src/addins/GnomePlatform/GnomePlatform.csproj
+@@ -52,6 +52,7 @@
+     <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+       <SpecificVersion>False</SpecificVersion>
      </Reference>
 +    <Reference Include="dbus-sharp, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5675b0c3093115b5" />
    </ItemGroup>
    <ItemGroup>
-     <ProjectReference Include="..\MonoDevelop.Core\MonoDevelop.Core.csproj">
+     <ProjectReference Include="..\..\core\MonoDevelop.Core\MonoDevelop.Core.csproj">
+diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
+index bdd66ebf1c..7bd704884b 100644
+--- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
++++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Commands/HelpCommands.cs
+@@ -70,7 +70,7 @@ namespace MonoDevelop.Ide.Commands
+ 			try {
+ 				var profile = MonoDevelop.Core.UserProfile.Current;
+ 				if (profile != null && System.IO.Directory.Exists (profile.LogDir))
+-					System.Diagnostics.Process.Start (profile.LogDir);
++					DesktopService.OpenFolder (profile.LogDir, null);
+ 			} catch (Exception ex) {
+ 				MonoDevelop.Core.LoggingService.LogError ("Could not open the Log Directory", ex);
+ 			}
+diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Desktop/PlatformService.cs b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Desktop/PlatformService.cs
+index f98341b450..7d81cdd5b1 100644
+--- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Desktop/PlatformService.cs
++++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide.Desktop/PlatformService.cs
+@@ -62,6 +62,12 @@ namespace MonoDevelop.Ide.Desktop
+ 			}
+ 		}
+ 
++		public virtual bool IsSandboxed {
++			get {
++				return false;
++			}
++		}
++
+ 		public virtual void Initialize ()
+ 		{
+ 		}
+diff --git a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide/DesktopService.cs b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide/DesktopService.cs
+index a999746239..1691abab78 100644
+--- a/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide/DesktopService.cs
++++ b/main/src/core/MonoDevelop.Ide/MonoDevelop.Ide/DesktopService.cs
+@@ -87,6 +87,12 @@ namespace MonoDevelop.Ide
+ 			}
+ 		}
+ 
++		public static bool isSandboxed {
++			get {
++				return platformService.IsSandboxed;
++			}
++		}
++
+ 		public static void SetGlobalProgress (double progress)
+ 		{
+ 			platformService.SetGlobalProgressBar (progress);
