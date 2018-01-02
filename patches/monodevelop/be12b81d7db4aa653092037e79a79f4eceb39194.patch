@@ -1,0 +1,16 @@
+commit be12b81d7db4aa653092037e79a79f4eceb39194
+Author: Matt Ward <matt.ward@xamarin.com>
+Date:   Tue Dec 5 14:47:53 2017 +0000
+
+    Revert "Fix build."
+    
+    This reverts commit 7eb1054ff04b9d14895c6d164e4119c848c35f66.
+
+diff --git a/main/src/addins/AspNet/Templates/StyleSheetTemplate.less b/main/src/addins/AspNet/Templates/StylesheetTemplate.less
+similarity index 100%
+rename from main/src/addins/AspNet/Templates/StyleSheetTemplate.less
+rename to main/src/addins/AspNet/Templates/StylesheetTemplate.less
+diff --git a/main/src/addins/AspNet/Templates/StyleSheetTemplate.scss b/main/src/addins/AspNet/Templates/StylesheetTemplate.scss
+similarity index 100%
+rename from main/src/addins/AspNet/Templates/StyleSheetTemplate.scss
+rename to main/src/addins/AspNet/Templates/StylesheetTemplate.scss

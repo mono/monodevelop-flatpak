@@ -579,6 +579,10 @@
                 {
                     "type": "patch",
                     "path": "patches/monodevelop/buildinfo.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/be12b81d7db4aa653092037e79a79f4eceb39194.patch"
                 }
             ]
         },
