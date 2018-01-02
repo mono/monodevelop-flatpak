@@ -396,6 +396,10 @@
                 {
                     "type": "patch",
                     "path": "patches/fsharp/fix-bootstrap-src-targets-path.patch"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/fsharp/fsharp-fix-mdb-support.patch"
                 }
             ]
         },
