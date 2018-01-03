@@ -1,0 +1,31 @@
+From 3096973d79355dd94195902388bf0d67fc105931 Mon Sep 17 00:00:00 2001
+From: Matt Ward <matt.ward@xamarin.com>
+Date: Tue, 5 Dec 2017 15:01:27 +0000
+Subject: [PATCH] [AspNet] Fix case of template files
+
+The StylesheetTemplate.scss and StylesheetTemplate.less now have
+the correct filename case.
+---
+ main/src/addins/AspNet/MonoDevelop.AspNet.csproj | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj b/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
+index d41807d55b..45410faaf0 100644
+--- a/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
++++ b/main/src/addins/AspNet/MonoDevelop.AspNet.csproj
+@@ -570,10 +570,10 @@
+     <None Include="Templates\StylesheetTemplate.css">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+-    <None Include="Templates\StyleSheetTemplate.less">
++    <None Include="Templates\StylesheetTemplate.less">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+-    <None Include="Templates\StyleSheetTemplate.scss">
++    <None Include="Templates\StylesheetTemplate.scss">
+       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+     </None>
+     <None Include="Templates\JsonFileTemplate.json">
+-- 
+2.14.1
+
