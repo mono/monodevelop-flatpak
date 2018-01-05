@@ -1,0 +1,17 @@
+diff --git a/main/Makefile.am b/main/Makefile.am
+index 26f87bad8a..4018d17317 100644
+--- a/main/Makefile.am
++++ b/main/Makefile.am
+@@ -53,7 +53,7 @@ appdatadir = $(datadir)/appdata
+ appdata_DATA = monodevelop.appdata.xml
+ 
+ xdgmimedir = $(datadir)/mime/packages
+-xdgmime_DATA = monodevelop.xml
++xdgmime_DATA = com.xamarin.MonoDevelop.xml
+ 
+ pkgconfig_in_files = monodevelop.pc.in monodevelop-core-addins.pc.in
+ 
+diff --git a/main/monodevelop.xml b/main/com.xamarin.MonoDevelop.xml
+similarity index 100%
+rename from main/monodevelop.xml
+rename to main/com.xamarin.MonoDevelop.xml
