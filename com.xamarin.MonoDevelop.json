@@ -30,7 +30,9 @@
         /* Break out of sandbox */
         "--talk-name=org.freedesktop.Flatpak",
         /* gvfs */
-        "--talk-name=org.gtk.vfs","--talk-name=org.gtk.vfs.*","--env=GIO_MODULE_DIR=/app/lib/gio/modules"
+        "--talk-name=org.gtk.vfs","--talk-name=org.gtk.vfs.*","--env=GIO_MODULE_DIR=/app/lib/gio/modules",
+        /* pkgconfig */
+        "--env=PKG_CONFIG_PATH=/app/lib/pkgconfig"
     ],
     "build-options" : {
         "cflags": "-O2 -g",
