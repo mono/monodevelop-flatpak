@@ -594,6 +594,14 @@
                 },
                 {
                     "type": "patch",
+                    "path": "patches/monodevelop/3637.diff"
+                },
+                {
+                    "type": "patch",
+                    "path": "patches/monodevelop/73ee7a59277b59602d162d9a1a398ef86e220941.diff"
+                },
+                {
+                    "type": "patch",
                     "path": "patches/monodevelop/0001-AspNet-Fix-case-of-template-files.patch"
                 }
             ]

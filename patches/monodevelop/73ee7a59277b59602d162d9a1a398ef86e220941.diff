@@ -1,0 +1,113 @@
+diff --git a/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/SystemAssemblyService.cs b/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/SystemAssemblyService.cs
+index c7fbba8c23d..542815e9e0d 100644
+--- a/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/SystemAssemblyService.cs
++++ b/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/SystemAssemblyService.cs
+@@ -69,7 +69,7 @@ internal void Initialize ()
+ 
+ 			// Don't initialize until Current and Default Runtimes are set
+ 			foreach (TargetRuntime runtime in runtimes) {
+-				runtime.Initialized += HandleRuntimeInitialized;
++				runtime.FrameworksInitialized += HandleRuntimeInitialized;
+ 			}
+ 
+ 			if (CurrentRuntime == null)
+@@ -83,12 +83,6 @@ internal void Initialize ()
+ 			};
+ 		}
+ 
+-		void InitializeRuntime (TargetRuntime runtime)
+-		{
+-			runtime.Initialized += HandleRuntimeInitialized;
+-			runtime.StartInitialization ();
+-		}
+-
+ 		void HandleRuntimeInitialized (object sender, EventArgs e)
+ 		{
+ 			var runtime = (TargetRuntime) sender;
+@@ -139,10 +133,9 @@ void UpdateFrameworks (IEnumerable<TargetFramework> toAdd)
+ 
+ 		public void RegisterRuntime (TargetRuntime runtime)
+ 		{
+-			runtime.Initialized += HandleRuntimeInitialized;
++			runtime.FrameworksInitialized += HandleRuntimeInitialized;
+ 			runtimes.Add (runtime);
+-			if (RuntimesChanged != null)
+-				RuntimesChanged (this, EventArgs.Empty);
++			RuntimesChanged?.Invoke (this, EventArgs.Empty);
+ 		}
+ 
+ 		public void UnregisterRuntime (TargetRuntime runtime)
+@@ -151,9 +144,8 @@ public void UnregisterRuntime (TargetRuntime runtime)
+ 				return;
+ 			DefaultRuntime = CurrentRuntime;
+ 			runtimes.Remove (runtime);
+-			runtime.Initialized -= HandleRuntimeInitialized;
+-			if (RuntimesChanged != null)
+-				RuntimesChanged (this, EventArgs.Empty);
++			runtime.FrameworksInitialized -= HandleRuntimeInitialized;
++			RuntimesChanged?.Invoke (this, EventArgs.Empty);
+ 		}
+ 
+ 		internal IEnumerable<TargetFramework> GetKnownFrameworks ()
+diff --git a/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/TargetRuntime.cs b/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/TargetRuntime.cs
+index 0b4ab4d4d4a..65865af3596 100644
+--- a/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/TargetRuntime.cs
++++ b/main/src/core/MonoDevelop.Core/MonoDevelop.Core.Assemblies/TargetRuntime.cs
+@@ -52,6 +52,7 @@ public abstract class TargetRuntime
+ 		object initLock = new object ();
+ 		object initEventLock = new object ();
+ 		bool initialized;
++		bool frameworksInitialized;
+ 		bool initializing;
+ 		bool backgroundInitialize;
+ 		bool extensionInitialized;
+@@ -342,6 +343,7 @@ public virtual IEnumerable<string> GetToolsPaths (TargetFramework fx)
+ 		internal protected abstract IEnumerable<string> GetGacDirectories ();
+ 		
+ 		EventHandler initializedEvent;
++		EventHandler frameworksInitializedEvent;
+ 
+ 		/// <summary>
+ 		/// This event is fired when the runtime has finished initializing. Runtimes are initialized
+@@ -367,6 +369,24 @@ public virtual IEnumerable<string> GetToolsPaths (TargetFramework fx)
+ 			}
+ 		}
+ 		
++		internal event EventHandler FrameworksInitialized {
++			add {
++				lock (initEventLock) {
++					if (frameworksInitialized) {
++						if (!ShuttingDown)
++							value (this, EventArgs.Empty);
++					}
++					else
++						frameworksInitializedEvent += value;
++				}
++			}
++			remove {
++				lock (initEventLock) {
++					frameworksInitializedEvent -= value;
++				}
++			}
++		}
++		
+ 		internal void EnsureInitialized ()
+ 		{
+ 			lock (initLock) {
+@@ -436,6 +456,16 @@ void RunInitialization ()
+ 			if (ShuttingDown)
+ 				return;
+ 			
++			lock (initEventLock) {
++				frameworksInitialized = true;
++				try {
++					if (frameworksInitializedEvent != null && !ShuttingDown)
++						frameworksInitializedEvent (this, EventArgs.Empty);
++				} catch (Exception ex) {
++					LoggingService.LogError ("Error while initializing the runtime: " + Id, ex);
++				}
++			}
++
+ 			timer.Trace ("Initializing frameworks");
+ 			OnInitialize ();
+ 		}
