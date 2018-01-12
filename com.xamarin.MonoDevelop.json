@@ -503,10 +503,6 @@
                     "type": "git",
                     "url": "git://github.com/mono/dbus-sharp-glib.git",
                     "branch": "master"
-                },
-                {
-                    "type": "patch",
-                    "path": "patches/dbus-sharp-glib/forceassemblyinfo.patch"
                 }
             ]
         },
