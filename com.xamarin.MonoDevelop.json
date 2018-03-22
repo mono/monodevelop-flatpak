@@ -391,7 +391,7 @@
                 {
                     "type": "git",
                     "url": "git://github.com/fsharp/fsharp.git",
-                    "branch": "4.1.25"
+                    "branch": "4.1.33"
                 },
                 {
                     "type": "patch",
