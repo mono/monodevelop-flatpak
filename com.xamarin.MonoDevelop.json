@@ -278,10 +278,6 @@
                     "branch": "mono-4.6.0.245"
                 },
                 {
-                    "type": "patch",
-                    "path": "patches/mono/hardcode_localstore_to_appdir.patch"
-                },
-                {
                     "type": "shell",
                     "commands": [ "./autogen.sh",
                                   "make get-monolite-latest"
