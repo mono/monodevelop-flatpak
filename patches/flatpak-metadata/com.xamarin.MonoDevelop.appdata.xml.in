@@ -7,7 +7,7 @@
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <url type="homepage">http://www.monodevelop.com</url>
-  <url type="bugtracker">https://bugzilla.xamarin.com/describecomponents.cgi?product=Xamarin%20Studio</url>
+  <url type="bugtracker">https://github.com/mono/monodevelop/issues</url>
   <screenshots>
     <screenshot type="default">
       <image type="source">https://download.mono-project.com/monodevelop/mdlin2.png</image>
